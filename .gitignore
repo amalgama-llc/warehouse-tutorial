@@ -1,0 +1,8 @@
+**/target
+**/bin
+*.DS_Store
+
+**/*.tycho
+**/.polyglot.*
+tests/reports_output/
+tests/tests_output/

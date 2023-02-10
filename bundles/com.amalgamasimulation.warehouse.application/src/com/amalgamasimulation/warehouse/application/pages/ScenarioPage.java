@@ -1,0 +1,50 @@
+package com.amalgamasimulation.warehouse.application.pages;
+
+import org.eclipse.emf.databinding.FeaturePath;
+
+import com.amalgamasimulation.warehouse.common.localization.Messages;
+import com.amalgamasimulation.warehouse.datamodel.DatamodelPackage;
+import com.amalgamasimulation.warehouse.datamodel.Scenario;
+import com.amalgamasimulation.desktop.binding.UpdateValueStrategyFactory;
+
+public class ScenarioPage extends AbstractPage<Scenario>{
+	
+	public ScenarioPage(Messages messages) {
+		super(messages, null);
+	}
+
+	@Override
+	public boolean isVisible(Object selectedObject) {
+		return selectedObject instanceof Scenario;
+	}
+	
+	@Override
+	protected String getNameClassObject() {
+		return messages.object_scenario;
+	}
+	
+	@Override
+	protected String getObjectDisplayName() {
+		return observable.getValue().getName();
+	}
+	
+	@Override
+	protected FeaturePath[] getUpdateListeners() {
+		return new FeaturePath [] {FeaturePath.fromList(DatamodelPackage.Literals.SCENARIO__NAME)};
+	}
+
+	@Override
+	protected void createControlsInternal() {
+		addStringSection(messages.obj_SCENARIO_col_NAME, DatamodelPackage.Literals.SCENARIO__NAME)
+			.addTextbox(UpdateValueStrategyFactory.stringIsNotEmpty());
+		addDateTimeSection(messages.obj_SCENARIO_col_BEGIN_DATE, DatamodelPackage.Literals.SCENARIO__BEGIN_DATE)
+			.addTextbox(UpdateValueStrategyFactory.localDateTime())
+			.addLocalDateTimeEditorButton()
+			.setEnabled(true);
+		addDateTimeSection(messages.obj_SCENARIO_col_END_DATE, DatamodelPackage.Literals.SCENARIO__END_DATE)
+			.addTextbox(UpdateValueStrategyFactory.localDateTime())
+			.addLocalDateTimeEditorButton()
+			.setEnabled(true);		
+	}
+}
+

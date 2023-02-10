@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Automatic-Module-Name: com.amalgamasimulation.warehouse.datamodel
+Bundle-SymbolicName: com.amalgamasimulation.warehouse.datamodel;singleton:=true
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Bundle-ClassPath: .
+Export-Package: com.amalgamasimulation.warehouse.datamodel,
+ com.amalgamasimulation.warehouse.datamodel.impl,
+ com.amalgamasimulation.warehouse.datamodel.util
+Require-Bundle: com.amalgamasimulation.calendardatamodel;visibility:=reexport,
+ com.amalgamasimulation.ecoreutils;visibility:=reexport,
+ com.amalgamasimulation.randomdatamodel;visibility:=reexport,
+ com.amalgamasimulation.timeseriesdatamodel;visibility:=reexport,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport
+
