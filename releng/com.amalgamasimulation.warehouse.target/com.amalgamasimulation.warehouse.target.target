@@ -63,6 +63,7 @@
 			<unit id="com.amalgamasimulation.timeseriesdatamodel" version="0.0.0"/>
 			<unit id="com.amalgamasimulation.calendardatamodel" version="0.0.0"/>
 			<unit id="com.amalgamasimulation.engine" version="0.0.0"/>
+			<unit id="com.amalgamasimulation.service" version="0.0.0"/>
 			<unit id="com.amalgamasimulation.engine.service" version="0.0.0"/>
 			<unit id="com.amalgamasimulation.graphicaleditor" version="0.0.0"/>
 			<unit id="com.amalgamasimulation.engine.controls" version="0.0.0"/>

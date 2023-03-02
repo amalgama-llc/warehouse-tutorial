@@ -153,6 +153,8 @@
    <plugin download-size="0" id="com.amalgamasimulation.warehouse.simulation" install-size="0" unpack="false" version="0.0.0"/>
 
    <plugin download-size="0" id="com.amalgamasimulation.engine.service" install-size="0" unpack="false" version="0.0.0"/>
+   
+   <plugin download-size="0" id="com.amalgamasimulation.service" install-size="0" unpack="false" version="0.0.0"/>
 
    <plugin download-size="0" id="com.amalgamasimulation.viewupdater.service" install-size="0" unpack="false" version="0.0.0"/>
 
