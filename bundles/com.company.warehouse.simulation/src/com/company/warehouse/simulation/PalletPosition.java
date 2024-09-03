@@ -11,9 +11,12 @@ public class PalletPosition implements PalletContainer {
      */
     private boolean busy;
 
+    // tag::constructor[]
     public PalletPosition(Node node) {
         this.node = node;
+        node.setPalletPosition(this);
     }
+    // end::constructor[]
 
     @Override
     public Node getNode() {
