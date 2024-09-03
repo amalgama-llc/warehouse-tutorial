@@ -14,6 +14,7 @@ import com.amalgamasimulation.utils.Utils;
 import com.company.warehouse.datamodel.Scenario;
 import com.company.warehouse.simulation.equipment.Forklift;
 import com.company.warehouse.simulation.graph.Arc;
+import com.company.warehouse.simulation.graph.EnvironmentWithPallets;
 import com.company.warehouse.simulation.graph.Node;
 import com.company.warehouse.simulation.graph.agents.Agent;
 
@@ -28,7 +29,12 @@ public class Model extends com.amalgamasimulation.engine.Model {
 	
 	// Graph environment from Amalgama Platform's Graph Agent Library.
 	// The container class for the graph and agents living in this graph.
-	protected GraphEnvironment<Node, Arc, Agent> graphEnvironment;
+//	protected GraphEnvironment<Node, Arc, Agent> graphEnvironment;
+    private EnvironmentWithPallets graphEnvironment;
+	public EnvironmentWithPallets getGraphEnvironment() {
+		return graphEnvironment;
+	}
+	
 	private Random random = new Random(0);
 	private double endTime;
 
@@ -57,8 +63,8 @@ public class Model extends com.amalgamasimulation.engine.Model {
 		setEndTime(dateToTime(scenario.getEndDate()));
 		
 		// Create a new empty graph environment upon creation of the model
-		graphEnvironment = new GraphEnvironment<>();
-//		engine.scheduleRelative(0, () -> getAgents().forEach(a -> dispatchAgent(a)));
+//		graphEnvironment = new GraphEnvironment<>();
+		graphEnvironment = new EnvironmentWithPallets();
 		initializeNodes();
 		initializeArcs();
         initializeMainStorage();
@@ -179,8 +185,8 @@ public class Model extends com.amalgamasimulation.engine.Model {
 	 * Adds an new network node to the model and performs all the necessary
 	 * settings. This method must be used during initialization of the model.
 	 */
-	public Node addNode(Point point) {
-		Node node = new Node(point);
+	public Node addNode(Point point, String id) {
+		Node node = new Node(point, id);
 		graphEnvironment.addNode(node);
 		return node;		
 	}
@@ -222,10 +228,9 @@ public class Model extends com.amalgamasimulation.engine.Model {
 		return endTime;
 	}
 	
-	
 	private void initializeNodes() {
 		for (var scenarioNode : scenario.getNodes()) {
-			Node node = addNode(new Point(scenarioNode.getX(), scenarioNode.getY()));
+			Node node = addNode(new Point(scenarioNode.getX(), scenarioNode.getY()), scenarioNode.getId());
 			mapping.nodesMap.put(scenarioNode, node);
 		}
 	}

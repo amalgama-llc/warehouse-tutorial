@@ -13,6 +13,7 @@ public class PalletPosition implements PalletContainer {
 
     public PalletPosition(Node node) {
         this.node = node;
+        node.setPalletPosition(this);
     }
 
     @Override
