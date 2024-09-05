@@ -6,6 +6,7 @@ import com.amalgamasimulation.service.ServiceWithResources.ResourceSeizingRule;
 import com.company.warehouse.datamodel.Direction;
 import com.company.warehouse.simulation.equipment.Forklift;
 import com.company.warehouse.simulation.equipment.Truck;
+import com.company.warehouse.simulation.tasks.IdlingTask;
 import com.company.warehouse.simulation.tasks.MovePalletTask;
 
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class Dispatcher {
             Direction.OUT, new LinkedList<>()
             );
 
-    private final Queue<Forklift> availableForklifts = new LinkedList<>();
+    private final Queue<IdlingTask> idlingTasks = new LinkedList<>();
     private final Queue<BiConsumer<Forklift, Runnable>> forkliftRequests = new LinkedList<>();
 
     public Dispatcher(Model model) {
@@ -45,20 +46,24 @@ public class Dispatcher {
         if (request != null) {
             request.accept(forklift, () -> addAvailableForklift(forklift));
         } else {
-            availableForklifts.add(forklift);
+            var idlingTask = new IdlingTask(engine, forklift);
+            idlingTask.start(() -> {});
+            idlingTasks.add(idlingTask);
         }
     }
 
     private void requestForklift(BiConsumer<Forklift, Runnable> request) {
-        final var forklift = availableForklifts.poll();
+        final var idlingTask = idlingTasks.poll();
 
-        if (forklift != null) {
+        if (idlingTask != null) {
+            idlingTask.cancel();
+            final var forklift = idlingTask.getForklift();
             request.accept(forklift, () -> addAvailableForklift(forklift));
         } else {
             forkliftRequests.add(request);
         }
     }
-
+    
     public void truckArrived(Truck truck) {
         final var suitableGates = gates.get(truck.getDirection());
         suitableGates.placeRequest(truck, (s, gate) ->
