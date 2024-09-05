@@ -63,6 +63,7 @@ public class PalletPosition implements PalletContainer {
         }
         busy = loading;
         reserved = false;
+        node.getGraphEnvironment().rerouteAgents();
         onBusyCallbacks.get(busy).ifPresent(callback -> callback.accept(this));
     }
 

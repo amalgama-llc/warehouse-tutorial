@@ -17,9 +17,15 @@ public class Node extends AgentGraphNodeImpl {
     private final String id;
 
     private PalletPosition palletPosition;
+    
+    private final EnvironmentWithPallets graphEnvironment;
+    public EnvironmentWithPallets getGraphEnvironment() {
+        return graphEnvironment;
+    }
 
-    public Node(Point point, String id) {
+    public Node(Point point, EnvironmentWithPallets graphEnvironment, String id) {
         super(point);
+        this.graphEnvironment = graphEnvironment;
         this.id = id;
     }
 

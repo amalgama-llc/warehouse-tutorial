@@ -15,4 +15,10 @@ public class EnvironmentWithPallets extends GraphEnvironment<Node, Arc, Void> {
         return busy ? BUSY_NODE_WEIGHT : 0;
     }
 
+    public void rerouteAgents() {
+        getAgents().stream()
+            .filter(a -> a.hasPath())
+            .forEach(a -> a.moveTo(a.getGraphPath().getLastNode(), a.getVelocity()));
+    }
+
 }

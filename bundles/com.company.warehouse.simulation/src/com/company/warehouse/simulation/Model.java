@@ -246,7 +246,7 @@ public class Model extends com.amalgamasimulation.engine.Model {
 	 * settings. This method must be used during initialization of the model.
 	 */
 	public Node addNode(Point point, String id) {
-		Node node = new Node(point, id);
+		Node node = new Node(point, graphEnvironment, id);
 		graphEnvironment.addNode(node);
 		return node;		
 	}
