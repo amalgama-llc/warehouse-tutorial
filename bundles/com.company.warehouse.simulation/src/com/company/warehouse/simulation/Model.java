@@ -210,7 +210,7 @@ public class Model extends com.amalgamasimulation.engine.Model {
             dispatcher.truckArrived(new Truck(d, scenario.getTruckCapacity()));
         }
         // tag::spawnTrucks-schedule[]
-        engine().scheduleRelative(scenario.getTruckArrivalIntervalMin() * minute(), this::spawnTrucks);
+        engine().scheduleRelative(scenario.getTruckArrivalIntervalMin() * 20 * minute(), this::spawnTrucks);
         // end::spawnTrucks-schedule[]
     }
     // end::spawnTrucks[]
