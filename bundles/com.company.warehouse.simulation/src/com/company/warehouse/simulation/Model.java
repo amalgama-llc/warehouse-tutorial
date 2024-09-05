@@ -291,7 +291,7 @@ public class Model extends com.amalgamasimulation.engine.Model {
 	 */
 	// tag::addNode[]
 	public Node addNode(Point point, String id) {
-		Node node = new Node(point, id);
+		Node node = new Node(point, graphEnvironment, id);
 		graphEnvironment.addNode(node);
 		return node;		
 	}
