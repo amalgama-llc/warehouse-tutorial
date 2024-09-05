@@ -18,11 +18,21 @@ public class Node extends AgentGraphNodeImpl {
     private final String id;
 
     private PalletPosition palletPosition;
+    
+    // tag::graphEnvironment[]
+    private final EnvironmentWithPallets graphEnvironment;
+    public EnvironmentWithPallets getGraphEnvironment() {
+        return graphEnvironment;
+    }
+    // end::graphEnvironment[]
 
-    public Node(Point point, String id) {
+    // tag::constructor[]
+    public Node(Point point, EnvironmentWithPallets graphEnvironment, String id) {
         super(point);
+        this.graphEnvironment = graphEnvironment;
         this.id = id;
     }
+    // end::constructor[]
 
     public Optional<PalletPosition> getPalletPosition() {
         return Optional.ofNullable(palletPosition);
