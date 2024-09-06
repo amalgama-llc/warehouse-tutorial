@@ -7,6 +7,7 @@ import com.amalgamasimulation.engine.Engine;
 import com.amalgamasimulation.graphagent.GraphAgent;
 import com.amalgamasimulation.graphagent.GeometricGraphPosition;
 import com.amalgamasimulation.graphagent.GraphEnvironment;
+import com.amalgamasimulation.utils.SingleStateStatistics;
 import com.company.warehouse.simulation.PalletContainer;
 import com.company.warehouse.simulation.graph.Arc;
 import com.company.warehouse.simulation.graph.Node;
@@ -16,7 +17,9 @@ import com.company.warehouse.simulation.graph.Node;
  *
  * Extends <code>GraphAgent</code> as this thing is about to move around the warehouse graph.
  */
+// tag::class[]
 public class Forklift extends GraphAgent<Node, Arc> {
+	// end::class[]
 
     /**
      * Having object name is handy for monitoring the system state and for debugging.
@@ -50,6 +53,10 @@ public class Forklift extends GraphAgent<Node, Arc> {
     }
     // end::loaded[]
     
+    // tag::stateStats[]
+	private final SingleStateStatistics<IEquipmentState> stateStats = new SingleStateStatistics<>();
+    // end::stateStats[]
+
     /**
      * User provided callback to notify completion of a current action.
      */
@@ -84,6 +91,15 @@ public class Forklift extends GraphAgent<Node, Arc> {
     public String getName() {
         return name;
     }
+    
+    // tag::getUtilizedTime[]
+    public double getUtilizedTime() {
+        return stateStats.getEverEnteredStates().stream()
+            .filter(s -> s.isUtilized())
+            .mapToDouble(s -> stateStats.getStateDuration(s, time()))
+            .sum();
+    }
+    // end::getUtilizedTime[]
 
     /**
      * Starts the movement from current to specified location.
@@ -163,7 +179,10 @@ public class Forklift extends GraphAgent<Node, Arc> {
      * Save a slot for the state at current simulation time.
      * @param state  the state to be saved
      */
+    // tag::putStatsSlot-1[]
     public void putStatsSlot(IEquipmentState state) {
+        stateStats.onEnteredState(state, time());
+        // end::putStatsSlot-1[]
         var statsSlots = getStatsSlots();
         var newSlot = new EquipmentStatsSlot(this, state);
         if(!statsSlots.isEmpty()) {

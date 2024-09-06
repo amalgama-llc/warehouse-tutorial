@@ -2,6 +2,7 @@ package com.company.warehouse.simulation;
 
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -81,7 +82,14 @@ public class Model extends com.amalgamasimulation.engine.Model {
     private final Dispatcher dispatcher;
     // end::dispatcher[]
 
-	/**
+    // tag::truckLoadingDurationField[]
+    private final Map<Direction, DoubleSummaryStatistics> truckLoadingDuration = Map.of(
+            Direction.IN, new DoubleSummaryStatistics(),
+            Direction.OUT, new DoubleSummaryStatistics()
+            );
+    // end::truckLoadingDurationField[]
+
+    /**
 	 * This constructor takes a data model's scenario as its second argument and
 	 * performs the initialization of the simulation model. During initialization,
 	 * it creates a mapping between data model entities and simulation entities.
@@ -365,6 +373,22 @@ public class Model extends com.amalgamasimulation.engine.Model {
 			}
 		}
 	}
+
+	// tag::getForkliftUtilization[]
+    public double getForkliftUtilization() {
+        final double avgUtilizationTime = forklifts.stream()
+                .mapToDouble(f -> f.getUtilizedTime())
+                .average().orElse(0);
+        
+        return Utils.zidz(avgUtilizationTime, time());
+    }
+	// end::getForkliftUtilization[]
+
+    // tag::getTruckLoadingDuration[]
+    public DoubleSummaryStatistics getTruckLoadingDuration(Direction direction) {
+        return truckLoadingDuration.get(direction);
+    }
+    // end::getTruckLoadingDuration[]
 
 	private Polyline createPolyline(com.company.warehouse.datamodel.Arc dmArc) {
 		List<Point> points = new ArrayList<>();
