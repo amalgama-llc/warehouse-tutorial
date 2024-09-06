@@ -96,10 +96,12 @@ public class Dispatcher {
     // tag::handleTruck[]
     private void handleTruck(Truck truck, Gate gate, Runnable onComplete) {
         gate.parkTruck(truck);
+        final double parkedTime = engine.time();
         requestForklift((forklift, forkliftReleaser) ->
             new HandleTruckTask(engine, truck, gate, forklift).start(() -> {
                 forkliftReleaser.run();
                 gate.unparkTruck(truck);
+                model.getTruckLoadingDuration(truck.getDirection()).accept(engine.time() - parkedTime);
                 onComplete.run();
             })
         );
