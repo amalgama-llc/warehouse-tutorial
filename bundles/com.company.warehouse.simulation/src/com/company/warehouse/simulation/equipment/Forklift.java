@@ -7,6 +7,7 @@ import com.amalgamasimulation.engine.Engine;
 import com.amalgamasimulation.graphagent.GraphAgent;
 import com.amalgamasimulation.graphagent.GeometricGraphPosition;
 import com.amalgamasimulation.graphagent.GraphEnvironment;
+import com.amalgamasimulation.utils.SingleStateStatistics;
 import com.company.warehouse.simulation.PalletContainer;
 import com.company.warehouse.simulation.graph.Arc;
 import com.company.warehouse.simulation.graph.Node;
@@ -48,6 +49,8 @@ public class Forklift extends GraphAgent<Node, Arc> {
         return loaded;
     }
     
+	private final SingleStateStatistics<IEquipmentState> stateStats = new SingleStateStatistics<>();
+
     /**
      * User provided callback to notify completion of a current action.
      */
@@ -79,6 +82,13 @@ public class Forklift extends GraphAgent<Node, Arc> {
     @Override
     public String getName() {
         return name;
+    }
+    
+    public double getUtilizedTime() {
+        return stateStats.getEverEnteredStates().stream()
+            .filter(s -> s.isUtilized())
+            .mapToDouble(s -> stateStats.getStateDuration(s, time()))
+            .sum();
     }
 
     /**
@@ -157,6 +167,7 @@ public class Forklift extends GraphAgent<Node, Arc> {
      * @param state  the state to be saved
      */
     public void putStatsSlot(IEquipmentState state) {
+        stateStats.onEnteredState(state, time());
         var statsSlots = getStatsSlots();
         var newSlot = new EquipmentStatsSlot(this, state);
         if(!statsSlots.isEmpty()) {

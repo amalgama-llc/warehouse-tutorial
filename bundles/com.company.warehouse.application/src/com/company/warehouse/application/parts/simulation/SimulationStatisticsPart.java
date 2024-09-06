@@ -14,6 +14,7 @@ import org.eclipse.swt.widgets.Composite;
 import com.company.warehouse.application.utils.AppData;
 import com.amalgamasimulation.desktop.ui.editor.utils.Topics;
 import com.company.warehouse.application.utils.Messages;
+import com.company.warehouse.datamodel.Direction;
 import com.company.warehouse.simulation.Model;
 import com.amalgamasimulation.desktop.ui.views.TableView;
 import com.amalgamasimulation.desktop.utils.MessageManager;
@@ -47,17 +48,20 @@ public class SimulationStatisticsPart {
 	}
 	
 	protected void onShowModel(Model model) {
-		if(model != null) {
-			List<Indicator> data = List.of(
-					new Indicator(messages.INDICATOR_ARCS, () -> (double)appData.getScenario().getArcs().size(), Formats.getDefaultFormats()::noDecimals, false),
-					new Indicator(messages.INDICATOR_NODES, () -> (double)appData.getScenario().getNodes().size(), Formats.getDefaultFormats()::noDecimals, false)					
-					);
-			tableView.setData(data);	
-		} else {
-			tableView.setData(Collections.emptyList());
-		}
+	    if(model != null) {
+	        List<Indicator> data = List.of(
+	                new Indicator(messages.INDICATOR_ARCS, () -> (double)appData.getScenario().getArcs().size(), Formats.getDefaultFormats()::noDecimals, false),
+	                new Indicator(messages.INDICATOR_NODES, () -> (double)appData.getScenario().getNodes().size(), Formats.getDefaultFormats()::noDecimals, false),
+	                new Indicator("Truck average unloading time", () -> model.getTruckLoadingDuration(Direction.IN).getAverage(), Formats.getDefaultFormats()::twoDecimals, false),
+	                new Indicator("Truck average loading time", () -> model.getTruckLoadingDuration(Direction.OUT).getAverage(), Formats.getDefaultFormats()::twoDecimals, false),
+	                new Indicator("Forklift utilization", () -> model.getForkliftUtilization(), Formats.getDefaultFormats()::percent, false)
+	                );
+	        tableView.setData(data);
+	    } else {
+	        tableView.setData(Collections.emptyList());
+	    }
 	}
-	
+
 	public class Indicator {		
 		String label;
 		Supplier<Double> value;
