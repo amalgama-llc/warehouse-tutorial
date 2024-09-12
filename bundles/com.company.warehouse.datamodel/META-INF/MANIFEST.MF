@@ -2,20 +2,22 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Automatic-Module-Name: com.company.warehouse.datamodel
 Bundle-SymbolicName: com.company.warehouse.datamodel;singleton:=true
-Bundle-Name: Data Model
+Bundle-Name: %pluginName
 Bundle-Version: 1.0.0
-Bundle-Vendor: Amalgama
+Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-ClassPath: .
-Export-Package: com.company.warehouse.datamodel,com.company.warehouse.da
- tamodel.impl,com.company.warehouse.datamodel.data,com.company.warehouse
- .datamodel.util
-Require-Bundle: com.amalgamasimulation.calendardatamodel;visibility:=ree
- xport,com.amalgamasimulation.ecoreutils;visibility:=reexport,com.amalga
- masimulation.randomdatamodel;visibility:=reexport,com.amalgamasimulatio
- n.timeseriesdatamodel;visibility:=reexport,org.eclipse.core.runtime,org
- .eclipse.emf.ecore;visibility:=reexport,com.amalgamasimulation.emf.exce
- l
+Export-Package: com.company.warehouse.datamodel,
+ com.company.warehouse.datamodel.impl,
+ com.company.warehouse.datamodel.data,
+ com.company.warehouse.datamodel.util
+Require-Bundle: com.amalgamasimulation.calendardatamodel;visibility:=reexport,
+ com.amalgamasimulation.ecoreutils;visibility:=reexport,
+ com.amalgamasimulation.randomdatamodel;visibility:=reexport,
+ com.amalgamasimulation.timeseriesdatamodel;visibility:=reexport,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ com.amalgamasimulation.emf.excel
 

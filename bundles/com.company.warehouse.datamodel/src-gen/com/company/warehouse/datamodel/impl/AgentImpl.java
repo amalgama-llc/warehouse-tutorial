@@ -151,7 +151,7 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	 @Override
+	@Override
 	public String getId() {
 		return id;
 	}
@@ -507,4 +507,3 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	}
 
 } //AgentImpl
-

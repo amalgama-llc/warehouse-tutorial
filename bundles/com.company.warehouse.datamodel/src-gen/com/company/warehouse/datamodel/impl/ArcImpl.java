@@ -505,4 +505,3 @@ public class ArcImpl extends MinimalEObjectImpl.Container implements Arc {
 	}
 
 } //ArcImpl
-

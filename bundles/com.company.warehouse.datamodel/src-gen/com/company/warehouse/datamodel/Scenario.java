@@ -23,6 +23,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.company.warehouse.datamodel.Scenario#getNodes <em>Nodes</em>}</li>
  *   <li>{@link com.company.warehouse.datamodel.Scenario#getArcs <em>Arcs</em>}</li>
  *   <li>{@link com.company.warehouse.datamodel.Scenario#getAgents <em>Agents</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.Scenario#getTruckCapacity <em>Truck Capacity</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.Scenario#getTruckArrivalIntervalMin <em>Truck Arrival Interval Min</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.Scenario#getForklifts <em>Forklifts</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.Scenario#getStoragePlaces <em>Storage Places</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.Scenario#getGates <em>Gates</em>}</li>
  * </ul>
  *
  * @see com.company.warehouse.datamodel.DatamodelPackage#getScenario()
@@ -138,5 +143,88 @@ public interface Scenario extends EObject {
 	 */
 	EList<Agent> getAgents();
 
-} // Scenario
+	/**
+	 * Returns the value of the '<em><b>Truck Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Truck Capacity</em>' attribute.
+	 * @see #setTruckCapacity(int)
+	 * @see com.company.warehouse.datamodel.DatamodelPackage#getScenario_TruckCapacity()
+	 * @model
+	 * @generated
+	 */
+	int getTruckCapacity();
 
+	/**
+	 * Sets the value of the '{@link com.company.warehouse.datamodel.Scenario#getTruckCapacity <em>Truck Capacity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Truck Capacity</em>' attribute.
+	 * @see #getTruckCapacity()
+	 * @generated
+	 */
+	void setTruckCapacity(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Truck Arrival Interval Min</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Truck Arrival Interval Min</em>' attribute.
+	 * @see #setTruckArrivalIntervalMin(double)
+	 * @see com.company.warehouse.datamodel.DatamodelPackage#getScenario_TruckArrivalIntervalMin()
+	 * @model
+	 * @generated
+	 */
+	double getTruckArrivalIntervalMin();
+
+	/**
+	 * Sets the value of the '{@link com.company.warehouse.datamodel.Scenario#getTruckArrivalIntervalMin <em>Truck Arrival Interval Min</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Truck Arrival Interval Min</em>' attribute.
+	 * @see #getTruckArrivalIntervalMin()
+	 * @generated
+	 */
+	void setTruckArrivalIntervalMin(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Forklifts</b></em>' containment reference list.
+	 * The list contents are of type {@link com.company.warehouse.datamodel.Forklift}.
+	 * It is bidirectional and its opposite is '{@link com.company.warehouse.datamodel.Forklift#getScenario <em>Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Forklifts</em>' containment reference list.
+	 * @see com.company.warehouse.datamodel.DatamodelPackage#getScenario_Forklifts()
+	 * @see com.company.warehouse.datamodel.Forklift#getScenario
+	 * @model opposite="scenario" containment="true"
+	 * @generated
+	 */
+	EList<Forklift> getForklifts();
+
+	/**
+	 * Returns the value of the '<em><b>Storage Places</b></em>' reference list.
+	 * The list contents are of type {@link com.company.warehouse.datamodel.Node}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Storage Places</em>' reference list.
+	 * @see com.company.warehouse.datamodel.DatamodelPackage#getScenario_StoragePlaces()
+	 * @model
+	 * @generated
+	 */
+	EList<Node> getStoragePlaces();
+
+	/**
+	 * Returns the value of the '<em><b>Gates</b></em>' containment reference list.
+	 * The list contents are of type {@link com.company.warehouse.datamodel.Gate}.
+	 * It is bidirectional and its opposite is '{@link com.company.warehouse.datamodel.Gate#getScenario <em>Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Gates</em>' containment reference list.
+	 * @see com.company.warehouse.datamodel.DatamodelPackage#getScenario_Gates()
+	 * @see com.company.warehouse.datamodel.Gate#getScenario
+	 * @model opposite="scenario" containment="true"
+	 * @generated
+	 */
+	EList<Gate> getGates();
+
+} // Scenario

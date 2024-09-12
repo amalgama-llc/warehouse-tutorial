@@ -138,4 +138,3 @@ public interface Node extends EObject {
 	void setScenario(Scenario value);
 
 } // Node
-

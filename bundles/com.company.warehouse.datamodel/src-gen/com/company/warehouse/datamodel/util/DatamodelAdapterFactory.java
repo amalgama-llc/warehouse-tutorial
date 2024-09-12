@@ -92,6 +92,16 @@ public class DatamodelAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseForklift(Forklift object) {
+			return createForkliftAdapter();
+		}
+
+		@Override
+		public Adapter caseGate(Gate object) {
+			return createGateAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -181,6 +191,34 @@ public class DatamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link com.company.warehouse.datamodel.Forklift <em>Forklift</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.company.warehouse.datamodel.Forklift
+	 * @generated
+	 */
+	public Adapter createForkliftAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.company.warehouse.datamodel.Gate <em>Gate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.company.warehouse.datamodel.Gate
+	 * @generated
+	 */
+	public Adapter createGateAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for the default case.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null.
@@ -193,4 +231,3 @@ public class DatamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 } //DatamodelAdapterFactory
-

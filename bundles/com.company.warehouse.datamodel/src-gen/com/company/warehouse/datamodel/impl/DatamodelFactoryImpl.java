@@ -5,6 +5,7 @@ package com.company.warehouse.datamodel.impl;
 import com.company.warehouse.datamodel.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -66,6 +67,10 @@ public class DatamodelFactoryImpl extends EFactoryImpl implements DatamodelFacto
 			return createPoint();
 		case DatamodelPackage.AGENT:
 			return createAgent();
+		case DatamodelPackage.FORKLIFT:
+			return createForklift();
+		case DatamodelPackage.GATE:
+			return createGate();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -76,6 +81,37 @@ public class DatamodelFactoryImpl extends EFactoryImpl implements DatamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+		case DatamodelPackage.DIRECTION:
+			return createDirectionFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+		case DatamodelPackage.DIRECTION:
+			return convertDirectionToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Scenario createScenario() {
 		ScenarioImpl scenario = new ScenarioImpl();
 		return scenario;
@@ -86,6 +122,7 @@ public class DatamodelFactoryImpl extends EFactoryImpl implements DatamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Arc createArc() {
 		ArcImpl arc = new ArcImpl();
 		return arc;
@@ -96,6 +133,7 @@ public class DatamodelFactoryImpl extends EFactoryImpl implements DatamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Node createNode() {
 		NodeImpl node = new NodeImpl();
 		return node;
@@ -106,6 +144,7 @@ public class DatamodelFactoryImpl extends EFactoryImpl implements DatamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Point createPoint() {
 		PointImpl point = new PointImpl();
 		return point;
@@ -116,6 +155,7 @@ public class DatamodelFactoryImpl extends EFactoryImpl implements DatamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Agent createAgent() {
 		AgentImpl agent = new AgentImpl();
 		return agent;
@@ -126,6 +166,51 @@ public class DatamodelFactoryImpl extends EFactoryImpl implements DatamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Forklift createForklift() {
+		ForkliftImpl forklift = new ForkliftImpl();
+		return forklift;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Gate createGate() {
+		GateImpl gate = new GateImpl();
+		return gate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Direction createDirectionFromString(EDataType eDataType, String initialValue) {
+		Direction result = Direction.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDirectionToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public DatamodelPackage getDatamodelPackage() {
 		return (DatamodelPackage) getEPackage();
 	}
@@ -142,4 +227,3 @@ public class DatamodelFactoryImpl extends EFactoryImpl implements DatamodelFacto
 	}
 
 } //DatamodelFactoryImpl
-
