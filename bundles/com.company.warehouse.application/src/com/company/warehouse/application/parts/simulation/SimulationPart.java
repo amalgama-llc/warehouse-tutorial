@@ -8,6 +8,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.ToolBar;
 
 import com.company.warehouse.application.animation.ArcShape;
+import com.company.warehouse.application.animation.ForkliftShape;
 import com.company.warehouse.application.animation.AgentShape;
 import com.company.warehouse.application.animation.NodeShape;
 import com.amalgamasimulation.desktop.ui.editor.utils.IconsMapping;
@@ -51,15 +52,19 @@ public class SimulationPart {
  		return toolBar;
 	}
 	
+	// tag::onShowModel-1[]
 	private void onShowModel(Model model) {
+		// end::onShowModel-1[]
 		this.model = model;
 		animationView.removeAllShapes();
 		if(model != null) {
 			model.getNodes().stream().forEach(n -> animationView.addShape(new NodeShape(n)));
+			// tag::onShowModel-2[]
 			model.getArcs().forEach(r -> animationView.addShape(new ArcShape(r)));		
-			model.getAgents().forEach(agent -> animationView.addShape(new AgentShape(agent)));
+	        model.getForklifts().forEach(f -> animationView.addShape(new ForkliftShape(f)));
 		}
 		animationView.adjustWindow();
 	}
+	// end::onShowModel-2[]
 }
 
