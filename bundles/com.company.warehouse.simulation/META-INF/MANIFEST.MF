@@ -8,9 +8,11 @@ Bundle-Vendor: Amalgama
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
-Export-Package: com.company.warehouse.simulation,com.company.warehouse.s
- imulation.graph,com.company.warehouse.simulation.graph.agents,com.compa
- ny.warehouse.simulation.graph.agents.stats.slots
+Export-Package: com.company.warehouse.simulation,
+ com.company.warehouse.simulation.equipment,
+ com.company.warehouse.simulation.graph,
+ com.company.warehouse.simulation.graph.agents,
+ com.company.warehouse.simulation.graph.agents.stats.slots
 Require-Bundle: com.company.warehouse.datamodel,com.amalgamasimulation.c
  alendardatamodel,com.amalgamasimulation.ecoreutils,com.amalgamasimulati
  on.engine,com.amalgamasimulation.geometry,com.amalgamasimulation.graph,
