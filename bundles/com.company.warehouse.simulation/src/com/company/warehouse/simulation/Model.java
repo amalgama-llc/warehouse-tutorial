@@ -1,5 +1,7 @@
 package com.company.warehouse.simulation;
 
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -8,14 +10,12 @@ import com.amalgamasimulation.geometry.Point;
 import com.amalgamasimulation.geometry.Polyline;
 import com.amalgamasimulation.graphagent.GraphEnvironment;
 import com.amalgamasimulation.utils.Pair;
+import com.amalgamasimulation.utils.Utils;
+import com.company.warehouse.datamodel.Scenario;
+import com.company.warehouse.simulation.equipment.Forklift;
 import com.company.warehouse.simulation.graph.Arc;
 import com.company.warehouse.simulation.graph.Node;
 import com.company.warehouse.simulation.graph.agents.Agent;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-
-import com.amalgamasimulation.utils.Utils;
-import com.company.warehouse.datamodel.Scenario;
 
 /**
  * This is the class that represents the simulation model itself. In our case,
@@ -31,7 +31,14 @@ public class Model extends com.amalgamasimulation.engine.Model {
 	protected GraphEnvironment<Node, Arc, Agent> graphEnvironment;
 	private Random random = new Random(0);
 	private double endTime;
-	
+
+	// tag::forklifts-prop[]
+    private List<Forklift> forklifts = new ArrayList<>();
+	public List<Forklift> getForklifts() {
+		return forklifts;
+	}
+	// end::forklifts-prop[]
+
 	/**
 	 * This constructor takes a data model's scenario as its second argument and
 	 * performs the initialization of the simulation model. During initialization,
@@ -39,22 +46,58 @@ public class Model extends com.amalgamasimulation.engine.Model {
 	 * This mapping is stored inside this class and can be retrieved with
 	 * getMapping() method.
 	 */
+	// tag::constructor-1[]
 	public Model(Engine engine, Scenario scenario) {
+		// end::constructor-1[]
 		super(engine);
 		this.scenario = scenario;
-		engine().setTemporal(scenario.getBeginDate(), ChronoUnit.HOURS);
+		// tag::setTemporal[]
+//		engine().setTemporal(scenario.getBeginDate(), ChronoUnit.HOURS);
+		engine().setTemporal(scenario.getBeginDate(), ChronoUnit.MINUTES);
+		// end::setTemporal[]
 		setEndTime(dateToTime(scenario.getEndDate()));
 		
 		// Create a new empty graph environment upon creation of the model
+		// tag::constructor-2[]
 		graphEnvironment = new GraphEnvironment<>();
-		// Schedule the dispatch event for the simulation time 0 for all the agents.
-		// Note this this event will be executed when the engine running the model starts
-		engine.scheduleRelative(0, () -> getAgents().forEach(a -> dispatchAgent(a)));
+//		engine.scheduleRelative(0, () -> getAgents().forEach(a -> dispatchAgent(a)));
 		initializeNodes();
 		initializeArcs();
-		initializeAgents();	
+		initializeForklifts();
+		
+		makeAssignments();
 	}
+	// end::constructor-2[]
 	
+	// tag::initializeForklifts[]
+    private void initializeForklifts() {
+        for (var scenarioForklift : scenario.getForklifts()) {
+            forklifts.add(new Forklift(
+                    engine(),
+                    graphEnvironment,
+                    scenarioForklift.getName(),
+                    mapping.nodesMap.get(scenarioForklift.getBase()),
+                    scenarioForklift.getVelocity(),
+                    scenarioForklift.getLoadingTimeSec() * second(),
+                    scenarioForklift.getUnloadingTimeSec() * second()
+                    ));
+        }
+	}
+	// end::initializeForklifts[]
+
+	// tag::makeAssignments[]
+    private void makeAssignments() {
+        var nodesSpliter = graphEnvironment.getNodeValues().spliterator();
+        int i = 0;
+        for (var forklift : forklifts) {
+            final var startTime = i++ * minute();
+            nodesSpliter.tryAdvance(targetNode ->
+                engine().scheduleRelative(startTime, () -> forklift.moveTo(targetNode, null))
+            );
+        }
+    }
+	// end::makeAssignments[]
+
 	/**
 	 * This is the method that is called every time an agent reaches its
 	 * destination. It selects the random node from all the nodes excluding the one
