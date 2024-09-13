@@ -38,6 +38,13 @@ public class Model extends com.amalgamasimulation.engine.Model {
 		return forklifts;
 	}
 	// end::forklifts-prop[]
+	
+	// tag::allPositions-prop[]
+    private List<PalletPosition> allPositions = new ArrayList<>();
+    public Iterable<PalletPosition> getAllPositions() {
+        return allPositions;
+    }
+    // end::allPositions-prop[]
 
 	/**
 	 * This constructor takes a data model's scenario as its second argument and
@@ -63,12 +70,46 @@ public class Model extends com.amalgamasimulation.engine.Model {
 //		engine.scheduleRelative(0, () -> getAgents().forEach(a -> dispatchAgent(a)));
 		initializeNodes();
 		initializeArcs();
+        initializeMainStorage();
+        initializeGates();
 		initializeForklifts();
 		
 		makeAssignments();
 	}
 	// end::constructor-2[]
-	
+
+	// tag::initializeStorageObjects[]
+    /**
+     * @param probability  requested probability of the <code>true</code> value.
+     * @return  pseudo-random boolean
+     */
+    public boolean randomTrue(double probability){
+        return random.nextDouble() < probability;
+    }
+
+    private PalletPosition newPalletPosition(com.company.warehouse.datamodel.Node scenarioNode, boolean busy) {
+        var node = mapping.nodesMap.get(scenarioNode);
+        var p = new PalletPosition(node);
+        if (busy) {
+            p.placePallet(true);
+        }
+        allPositions.add(p);
+        return p;
+    }
+
+    private void initializeMainStorage() {
+        scenario.getStoragePlaces().stream()
+                .forEach(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)));
+    }
+
+    private void initializeGates() {
+        for (var scenarioGate : scenario.getGates()) {
+            scenarioGate.getPlaces().stream()
+                    .forEach(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)));
+        }
+    }
+	// end::initializeStorageObjects[]
+
 	// tag::initializeForklifts[]
     private void initializeForklifts() {
         for (var scenarioForklift : scenario.getForklifts()) {
