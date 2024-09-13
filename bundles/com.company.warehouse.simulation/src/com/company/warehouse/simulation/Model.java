@@ -36,6 +36,11 @@ public class Model extends com.amalgamasimulation.engine.Model {
 	public List<Forklift> getForklifts() {
 		return forklifts;
 	}
+	
+    private List<PalletPosition> allPositions = new ArrayList<>();
+    public Iterable<PalletPosition> getAllPositions() {
+        return allPositions;
+    }
 
 	/**
 	 * This constructor takes a data model's scenario as its second argument and
@@ -56,11 +61,43 @@ public class Model extends com.amalgamasimulation.engine.Model {
 //		engine.scheduleRelative(0, () -> getAgents().forEach(a -> dispatchAgent(a)));
 		initializeNodes();
 		initializeArcs();
+        initializeMainStorage();
+        initializeGates();
 		initializeForklifts();
 		
 		makeAssignments();
 	}
-	
+
+    /**
+     * @param probability  requested probability of the <code>true</code> value.
+     * @return  pseudo-random boolean
+     */
+    public boolean randomTrue(double probability){
+        return random.nextDouble() < probability;
+    }
+
+    private PalletPosition newPalletPosition(com.company.warehouse.datamodel.Node scenarioNode, boolean busy) {
+        var node = mapping.nodesMap.get(scenarioNode);
+        var p = new PalletPosition(node);
+        if (busy) {
+            p.placePallet(true);
+        }
+        allPositions.add(p);
+        return p;
+    }
+
+    private void initializeMainStorage() {
+        scenario.getStoragePlaces().stream()
+                .forEach(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)));
+    }
+
+    private void initializeGates() {
+        for (var scenarioGate : scenario.getGates()) {
+            scenarioGate.getPlaces().stream()
+                    .forEach(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)));
+        }
+    }
+
     private void initializeForklifts() {
         for (var scenarioForklift : scenario.getForklifts()) {
             forklifts.add(new Forklift(

@@ -11,6 +11,7 @@ import com.company.warehouse.application.animation.ArcShape;
 import com.company.warehouse.application.animation.ForkliftShape;
 import com.company.warehouse.application.animation.AgentShape;
 import com.company.warehouse.application.animation.NodeShape;
+import com.company.warehouse.application.animation.PalletPositionShape;
 import com.amalgamasimulation.desktop.ui.editor.utils.IconsMapping;
 import com.amalgamasimulation.desktop.ui.editor.utils.Topics;
 import com.company.warehouse.simulation.Model;
@@ -58,6 +59,7 @@ public class SimulationPart {
 		if(model != null) {
 			model.getNodes().stream().forEach(n -> animationView.addShape(new NodeShape(n)));
 			model.getArcs().forEach(r -> animationView.addShape(new ArcShape(r)));		
+	        model.getAllPositions().forEach(p -> animationView.addShape(new PalletPositionShape(p)));
 	        model.getForklifts().forEach(f -> animationView.addShape(new ForkliftShape(f)));
 		}
 		animationView.adjustWindow();
