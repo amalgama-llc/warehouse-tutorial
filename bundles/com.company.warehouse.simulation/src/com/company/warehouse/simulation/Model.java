@@ -17,6 +17,7 @@ import com.company.warehouse.simulation.graph.Arc;
 import com.company.warehouse.simulation.graph.EnvironmentWithPallets;
 import com.company.warehouse.simulation.graph.Node;
 import com.company.warehouse.simulation.graph.agents.Agent;
+import com.company.warehouse.simulation.tasks.MovePalletTask;
 
 /**
  * This is the class that represents the simulation model itself. In our case,
@@ -119,12 +120,28 @@ public class Model extends com.amalgamasimulation.engine.Model {
 	}
 
     private void makeAssignments() {
-        var nodesSpliter = graphEnvironment.getNodeValues().spliterator();
+        // To iterate busy positions
+        var busyPositions = graphEnvironment.getNodeValues().stream()
+                .flatMap(node -> node.getPalletPosition().stream())
+                .filter(position -> position.isBusy())
+                .spliterator();
+        
+        // To iterate free positions
+        var freePositions = graphEnvironment.getNodeValues().stream()
+                .flatMap(node -> node.getPalletPosition().stream())
+                .filter(position -> !position.isBusy())
+                .spliterator();
+        
         int i = 0;
         for (var forklift : forklifts) {
             final var startTime = i++ * minute();
-            nodesSpliter.tryAdvance(targetNode ->
-                engine().scheduleRelative(startTime, () -> forklift.moveTo(targetNode, null))
+            busyPositions.tryAdvance(from ->
+                freePositions.tryAdvance(to -> {
+                    final var movingTask = new MovePalletTask(engine(), forklift, from, to);
+                    engine().scheduleRelative(startTime,
+                            () -> movingTask.start(null)
+                    );
+                })
             );
         }
     }

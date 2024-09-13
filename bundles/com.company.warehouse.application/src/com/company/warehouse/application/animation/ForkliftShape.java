@@ -26,10 +26,10 @@ public class ForkliftShape extends GroupShape {
     }
 
     private double cargoSize() {
-        return 5;
+        return forklift.isLoaded() ? 6 : 5;
     }
 
     private Color cargoColor() {
-        return Color.black;
+        return forklift.isLoaded() ? Color.green : Color.black;
     }
 }

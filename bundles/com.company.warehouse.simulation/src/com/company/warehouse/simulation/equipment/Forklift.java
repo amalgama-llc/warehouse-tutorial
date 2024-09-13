@@ -4,6 +4,7 @@ import com.amalgamasimulation.engine.Engine;
 import com.amalgamasimulation.graphagent.GraphAgent;
 import com.amalgamasimulation.graphagent.GeometricGraphPosition;
 import com.amalgamasimulation.graphagent.GraphEnvironment;
+import com.company.warehouse.simulation.PalletContainer;
 import com.company.warehouse.simulation.graph.Arc;
 import com.company.warehouse.simulation.graph.Node;
 
@@ -39,6 +40,11 @@ public class Forklift extends GraphAgent<Node, Arc> {
      */
     private final double unloadingTime;
 
+    private boolean loaded;
+    public boolean isLoaded() {
+        return loaded;
+    }
+    
     /**
      * User provided callback to notify completion of a current action.
      */
@@ -94,6 +100,24 @@ public class Forklift extends GraphAgent<Node, Arc> {
     private void resetAction(Runnable onComplete) {
         cancelMoving();
         this.onComplete = onComplete;
+    }
+
+    public void load(PalletContainer container, Runnable onComplete) {
+        resetAction(onComplete);
+        engine.scheduleRelative(loadingTime, () -> {
+            loaded = true;
+            container.placePallet(false);
+            finishAction();
+        });
+    }
+
+    public void unload(PalletContainer container, Runnable onComplete) {
+        resetAction(onComplete);
+        engine.scheduleRelative(unloadingTime, () -> {
+            loaded = false;
+            container.placePallet(true);
+            finishAction();
+        });
     }
 
     /**
