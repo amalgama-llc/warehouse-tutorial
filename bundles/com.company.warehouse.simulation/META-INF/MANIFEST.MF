@@ -14,10 +14,17 @@ Export-Package: com.company.warehouse.simulation,
  com.company.warehouse.simulation.graph.agents,
  com.company.warehouse.simulation.graph.agents.stats.slots,
  com.company.warehouse.simulation.tasks
-Require-Bundle: com.company.warehouse.datamodel,com.amalgamasimulation.c
- alendardatamodel,com.amalgamasimulation.ecoreutils,com.amalgamasimulati
- on.engine,com.amalgamasimulation.geometry,com.amalgamasimulation.graph,
- com.amalgamasimulation.graphagent,com.amalgamasimulation.randomdatamode
- l,com.amalgamasimulation.timeseriesdatamodel,com.amalgamasimulation.uti
- ls,com.amalgamasimulation.core,com.amalgamasimulation.desktop.ui.editor
+Require-Bundle: com.company.warehouse.datamodel,
+ com.amalgamasimulation.calendardatamodel,
+ com.amalgamasimulation.ecoreutils,
+ com.amalgamasimulation.engine,
+ com.amalgamasimulation.geometry,
+ com.amalgamasimulation.graph,
+ com.amalgamasimulation.graphagent,
+ com.amalgamasimulation.randomdatamodel,
+ com.amalgamasimulation.timeseriesdatamodel,
+ com.amalgamasimulation.utils,
+ com.amalgamasimulation.core,
+ com.amalgamasimulation.desktop.ui.editor,
+ com.amalgamasimulation.service
 
