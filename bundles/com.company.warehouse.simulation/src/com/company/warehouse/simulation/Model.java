@@ -17,6 +17,7 @@ import com.company.warehouse.simulation.graph.Arc;
 import com.company.warehouse.simulation.graph.EnvironmentWithPallets;
 import com.company.warehouse.simulation.graph.Node;
 import com.company.warehouse.simulation.graph.agents.Agent;
+import com.company.warehouse.simulation.tasks.IdlingTask;
 import com.company.warehouse.simulation.tasks.MovePalletTask;
 
 /**
@@ -131,15 +132,18 @@ public class Model extends com.amalgamasimulation.engine.Model {
                 .flatMap(node -> node.getPalletPosition().stream())
                 .filter(position -> !position.isBusy())
                 .spliterator();
-        
+
         int i = 0;
         for (var forklift : forklifts) {
-            final var startTime = i++ * minute();
+            final var startTime = i++ * 2 * minute();
             busyPositions.tryAdvance(from ->
                 freePositions.tryAdvance(to -> {
                     final var movingTask = new MovePalletTask(engine(), forklift, from, to);
+                    final var idlingTask = new IdlingTask(engine(), forklift);
                     engine().scheduleRelative(startTime,
-                            () -> movingTask.start(null)
+                            () -> movingTask.start(
+                                    () -> idlingTask.start(null)
+                            )
                     );
                 })
             );
