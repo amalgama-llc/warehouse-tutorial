@@ -12,6 +12,7 @@ import com.company.warehouse.application.animation.ForkliftShape;
 import com.company.warehouse.application.animation.AgentShape;
 import com.company.warehouse.application.animation.NodeShape;
 import com.company.warehouse.application.animation.PalletPositionShape;
+import com.company.warehouse.application.animation.TruckAtGateShape;
 import com.amalgamasimulation.desktop.ui.editor.utils.IconsMapping;
 import com.amalgamasimulation.desktop.ui.editor.utils.Topics;
 import com.company.warehouse.simulation.Model;
@@ -61,6 +62,10 @@ public class SimulationPart {
 			model.getArcs().forEach(r -> animationView.addShape(new ArcShape(r)));		
 	        model.getAllPositions().forEach(p -> animationView.addShape(new PalletPositionShape(p)));
 	        model.getForklifts().forEach(f -> animationView.addShape(new ForkliftShape(f)));
+	        
+	        for (var d : com.company.warehouse.datamodel.Direction.values()) {
+	            model.getGatesInDirection(d).forEach(g -> animationView.addShape(new TruckAtGateShape(g, model)));
+	        }
 		}
 		animationView.adjustWindow();
 	}

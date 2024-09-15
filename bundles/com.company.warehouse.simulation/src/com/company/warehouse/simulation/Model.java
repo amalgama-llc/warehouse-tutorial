@@ -3,6 +3,7 @@ package com.company.warehouse.simulation;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import com.amalgamasimulation.engine.Engine;
@@ -11,8 +12,10 @@ import com.amalgamasimulation.geometry.Polyline;
 import com.amalgamasimulation.graphagent.GraphEnvironment;
 import com.amalgamasimulation.utils.Pair;
 import com.amalgamasimulation.utils.Utils;
+import com.company.warehouse.datamodel.Direction;
 import com.company.warehouse.datamodel.Scenario;
 import com.company.warehouse.simulation.equipment.Forklift;
+import com.company.warehouse.simulation.equipment.Truck;
 import com.company.warehouse.simulation.graph.Arc;
 import com.company.warehouse.simulation.graph.EnvironmentWithPallets;
 import com.company.warehouse.simulation.graph.Node;
@@ -50,6 +53,13 @@ public class Model extends com.amalgamasimulation.engine.Model {
         return allPositions;
     }
 
+    private final Map<Direction, List<Gate>> gatesByDirection = Map.of(
+            Direction.IN, new ArrayList<>(),
+            Direction.OUT, new ArrayList<>()
+            );
+
+    private final Dispatcher dispatcher;
+
 	/**
 	 * This constructor takes a data model's scenario as its second argument and
 	 * performs the initialization of the simulation model. During initialization,
@@ -73,8 +83,10 @@ public class Model extends com.amalgamasimulation.engine.Model {
         initializeGates();
 		initializeForklifts();
 		
-		makeAssignments();
-	}
+//		makeAssignments();
+        dispatcher = new Dispatcher(this);
+        engine().scheduleRelative(0, this::spawnTrucks);
+    }
 
     /**
      * @param probability  requested probability of the <code>true</code> value.
@@ -101,8 +113,12 @@ public class Model extends com.amalgamasimulation.engine.Model {
 
     private void initializeGates() {
         for (var scenarioGate : scenario.getGates()) {
+            final var direction = scenarioGate.getDirection();
+            final var entrance = mapping.nodesMap.get(scenarioGate.getEntrance());
             scenarioGate.getPlaces().stream()
                     .forEach(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)));
+            final var gate = new Gate(direction, entrance);
+            getGatesInDirection(direction).add(gate);
         }
     }
 
@@ -148,6 +164,17 @@ public class Model extends com.amalgamasimulation.engine.Model {
                 })
             );
         }
+    }
+	
+    public List<Gate> getGatesInDirection(Direction direction) {
+        return gatesByDirection.get(direction);
+    }
+
+    private void spawnTrucks() {
+        for (var d : Direction.VALUES) {
+            dispatcher.truckArrived(new Truck(d, scenario.getTruckCapacity()));
+        }
+        engine().scheduleRelative(scenario.getTruckArrivalIntervalMin() * minute(), this::spawnTrucks);
     }
 
 	/**
