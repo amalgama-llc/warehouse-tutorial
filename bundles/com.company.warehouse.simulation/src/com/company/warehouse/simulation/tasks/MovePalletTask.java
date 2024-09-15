@@ -56,6 +56,7 @@ public class MovePalletTask extends ForkliftTask {
                 .addEnterAction(State.MOVE_TO_UNLOADING, state -> moveToUnloading())
                 .addEnterAction(State.UNLOADING, state -> unloading())
                 .addEnterAction(State.FINISHED, state -> finished())
+                .addEnterAction((state, message) -> forklift.putStatsSlot(state));
                 ;
     }
 
