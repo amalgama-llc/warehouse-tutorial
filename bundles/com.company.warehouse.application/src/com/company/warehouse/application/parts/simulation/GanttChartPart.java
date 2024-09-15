@@ -19,7 +19,9 @@ import com.amalgamasimulation.engine.service.IEngineService;
 import com.amalgamasimulation.utils.Colors;
 import com.amalgamasimulation.utils.format.Formats;
 import com.amalgamasimulation.viewupdater.service.IViewUpdaterService;
+import com.company.warehouse.application.EquipmentStateUI;
 import com.company.warehouse.simulation.Model;
+import com.company.warehouse.simulation.equipment.EquipmentStatsSlot;
 import com.company.warehouse.simulation.graph.agents.Agent.AgentState;
 import com.company.warehouse.simulation.graph.agents.stats.slots.AgentStatsSlot;
 
@@ -43,7 +45,7 @@ public class GanttChartPart {
 	}
 	
 	private void initializeGanttChart( Composite parent ) {
-		ganttChart =  new TimeGanttChart (new ChartEnvironmentSwt( parent ), "Gantt chart", ChronoUnit.HOURS );
+		ganttChart =  new TimeGanttChart (new ChartEnvironmentSwt( parent ), "Gantt chart", ChronoUnit.MINUTES );
 		viewUpdaterService.getDefaultUpdater().addView( () -> updateView(), () -> false );
 		messageManager.subscribe(Topics.SHOW_MODEL, this::updateContent, true);
 	}
@@ -52,18 +54,20 @@ public class GanttChartPart {
 		ganttChart.getVisualSetContainer().clear();
 		if (model != null) {
 			ganttChart.getXAxis().setTimeStyle(AxisTimeStyle.getDefault(model.timeToDate(0), model.timeUnit()))
-				.setDisplayedRange(0,  model.getEndTime());
-			model.getAgents().forEach(agent -> {
-				var visualSet = new GanttVisualSet<>(agent.getName(), () -> agent.getStatsSlots(), t -> t.beginTime(), t -> t.endTime())
-					.setBackgroundColor(t -> t.getState() == AgentState.MOVING ? Colors.BLUE : Colors.DARK_RED)
-					.setLabelText( LabelSide.TOP_LEFT, this::getTopLeftText, s -> 9.0, s -> Colors.white )
-					.setLabelText( LabelSide.TOP_CENTER, this::getTopCenterText, s -> 9.0, s -> Colors.white )
-					.setLabelText( LabelSide.TOP_RIGHT, this::getTopRightText, s -> 9.0, s -> Colors.white )
-					.setLabelText( LabelSide.MIDDLE_CENTER, this::getMiddleCenterText, s -> 12.0, s -> Colors.white );
-				ganttChart.getVisualSetContainer().addVisualSet(visualSet);
-			});
+				.setDisplayedRange(0,  model.minute() * 30);
+	        for (var forklift : model.getForklifts()) {
+	            var visualSet = new GanttVisualSet<>(forklift.getName(), () -> forklift.getStatsSlots(), t -> t.beginTime(), t -> t.endTime())
+	                    .setBackgroundColor(s -> EquipmentStateUI.colorOf(s.getState()))
+	                    .setLabelText(LabelSide.MIDDLE_CENTER, s -> EquipmentStateUI.nameOf(s.getState()), s -> 12.0, s -> Colors.white)
+	                    .setLabelText(LabelSide.TOP_LEFT, this::getBeginTimeText, s -> 9.0, s -> Colors.white);
+	            ganttChart.getVisualSetContainer().addVisualSet(visualSet);
+	        }
 		}
 		ganttChart.redraw();
+	}
+	
+	private String getBeginTimeText(EquipmentStatsSlot slot) {
+		return Formats.getDefaultFormats().dayMonthLongYearHoursMinutes(timeToDate(slot.beginTime()));
 	}
 	
 	private void updateView() {

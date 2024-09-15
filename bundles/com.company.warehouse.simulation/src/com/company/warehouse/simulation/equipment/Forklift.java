@@ -1,5 +1,8 @@
 package com.company.warehouse.simulation.equipment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.amalgamasimulation.engine.Engine;
 import com.amalgamasimulation.graphagent.GraphAgent;
 import com.amalgamasimulation.graphagent.GeometricGraphPosition;
@@ -49,6 +52,14 @@ public class Forklift extends GraphAgent<Node, Arc> {
      * User provided callback to notify completion of a current action.
      */
     private Runnable onComplete;
+
+    /**
+     * The history of states in time. To be used in the Gantt Chart.
+     */
+    private List<EquipmentStatsSlot> statsSlots = new ArrayList<>();
+    public List<EquipmentStatsSlot> getStatsSlots() {
+        return statsSlots;
+    }
 
     public Forklift(Engine engine, GraphEnvironment<Node, Arc, ?> graphEnvironment, String name, Node base,
             double velocity, double loadingTime, double unloadingTime) {
@@ -138,6 +149,26 @@ public class Forklift extends GraphAgent<Node, Arc> {
             var callback = onComplete;
             onComplete = null;
             callback.run();
+        }
+    }
+
+    /**
+     * Save a slot for the state at current simulation time.
+     * @param state  the state to be saved
+     */
+    public void putStatsSlot(IEquipmentState state) {
+        var statsSlots = getStatsSlots();
+        var newSlot = new EquipmentStatsSlot(this, state);
+        if(!statsSlots.isEmpty()) {
+            var lastSlot = statsSlots.get(statsSlots.size() - 1);
+            if(lastSlot.duration() > 0) {
+                lastSlot.close();
+                statsSlots.add(newSlot);
+            } else {
+                statsSlots.set(statsSlots.size() - 1, newSlot);
+            }
+        } else {
+            statsSlots.add(newSlot);
         }
     }
 

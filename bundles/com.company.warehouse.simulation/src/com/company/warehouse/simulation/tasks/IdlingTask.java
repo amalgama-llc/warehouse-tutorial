@@ -35,6 +35,7 @@ public class IdlingTask extends ForkliftTask {
                 .addTransition(State.IDLING, State.CANCELLED)
                 .addEnterAction(State.MOVE_TO_BASE, state -> moveToBase())
                 .addEnterAction(State.CANCELLED, state -> cancelling())
+                .addEnterAction((state, message) -> forklift.putStatsSlot(state))
                 ;
     }
 

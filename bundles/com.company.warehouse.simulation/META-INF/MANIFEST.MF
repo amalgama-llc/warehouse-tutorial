@@ -12,7 +12,8 @@ Export-Package: com.company.warehouse.simulation,
  com.company.warehouse.simulation.equipment,
  com.company.warehouse.simulation.graph,
  com.company.warehouse.simulation.graph.agents,
- com.company.warehouse.simulation.graph.agents.stats.slots
+ com.company.warehouse.simulation.graph.agents.stats.slots,
+ com.company.warehouse.simulation.tasks
 Require-Bundle: com.company.warehouse.datamodel,com.amalgamasimulation.c
  alendardatamodel,com.amalgamasimulation.ecoreutils,com.amalgamasimulati
  on.engine,com.amalgamasimulation.geometry,com.amalgamasimulation.graph,
