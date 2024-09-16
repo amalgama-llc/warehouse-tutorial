@@ -19,14 +19,20 @@ public class Gate {
      */
     private final Node entrance;
 
+    private final StorageArea storageArea;
+    public StorageArea getStorageArea() {
+        return storageArea;
+    }
+
     /**
      * A parked truck.
      */
     private Truck truck;
 
-    public Gate(Direction direction, Node entrance) {
+    public Gate(Direction direction, Node entrance, StorageArea storage) {
         this.direction = direction;
         this.entrance = entrance;
+        this.storageArea = storage;
     }
 
     public Direction getDirection() {

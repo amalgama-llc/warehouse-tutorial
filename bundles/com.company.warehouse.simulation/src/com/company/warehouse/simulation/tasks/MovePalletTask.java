@@ -38,6 +38,10 @@ public class MovePalletTask extends ForkliftTask {
     private final PalletContainer to;
     private final StateMachine<State> control;
 
+    public MovePalletTask(Engine engine, Forklift forklift, PalletContainer a, PalletContainer b, boolean reverse) {
+        this(engine, forklift, reverse ? b : a, reverse ? a : b);
+    }
+
     public MovePalletTask(Engine engine, Forklift forklift, PalletContainer from, PalletContainer to) {
         super(engine, forklift);
         this.from = from;

@@ -6,6 +6,7 @@ import com.amalgamasimulation.service.ServiceWithResources.ResourceSeizingRule;
 import com.company.warehouse.datamodel.Direction;
 import com.company.warehouse.simulation.equipment.Forklift;
 import com.company.warehouse.simulation.equipment.Truck;
+import com.company.warehouse.simulation.tasks.HandleTruckTask;
 import com.company.warehouse.simulation.tasks.IdlingTask;
 import com.company.warehouse.simulation.tasks.MovePalletTask;
 
@@ -74,55 +75,18 @@ public class Dispatcher {
     }
 
     private void handleTruckOnGate(Truck truck, Gate gate, Runnable onComplete) {
-        final var direction = gate.getDirection();
-        final var oppositeDirection = (direction == Direction.IN) ? Direction.OUT : Direction.IN;
-
-        gate.parkTruck(truck);
-
-        final var oppositeGate = pendingGatesWithTrucks.get(oppositeDirection).poll();
-
-        if (oppositeGate == null) {
-            pendingGatesWithTrucks.get(direction).add(gate);
-            return;
-        }
-
-        handleGatePair(gate, oppositeGate, () -> {
-            gate.unparkTruck(truck);
-            onComplete.run();
-        });
+        handleTruck(truck, gate, onComplete);
     }
 
-    private void handleGatePair(Gate gate, Gate oppositeGate, Runnable onComplete) {
-        final var truck = gate.getTruck().get();
-        final var oppositeTruck = oppositeGate.getTruck().get();
-
+    private void handleTruck(Truck truck, Gate gate, Runnable onComplete) {
+        gate.parkTruck(truck);
         requestForklift((forklift, forkliftReleaser) ->
-            handleGatePairWithForklift(truck, oppositeTruck, forklift, () -> {
+            new HandleTruckTask(engine, truck, gate, forklift).start(() -> {
                 forkliftReleaser.run();
-                oppositeGate.unparkTruck(oppositeTruck);
-                gates.get(oppositeTruck.getDirection()).release(oppositeTruck);
+                gate.unparkTruck(truck);
                 onComplete.run();
             })
         );
-    }
-
-    private void handleGatePairWithForklift(Truck truck, Truck oppositeTruck, Forklift forklift, Runnable onComplete) {
-        final boolean loading = truck.getDirection() == Direction.OUT;
-
-        if (!truck.isAvailableFor(loading)) {
-            onComplete.run();
-            return;
-        }
-
-        newMovePalletTask(forklift, truck, oppositeTruck, loading).start(() ->
-            handleGatePairWithForklift(truck, oppositeTruck, forklift, onComplete)
-        );
-    }
-
-    private MovePalletTask newMovePalletTask(Forklift forklift, PalletContainer a, PalletContainer b, boolean reverse) {
-        final PalletContainer from = reverse ? b : a;
-        final PalletContainer to = reverse ? a : b;
-        return new MovePalletTask(engine, forklift, from, to);
     }
 
 }

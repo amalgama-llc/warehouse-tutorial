@@ -2,9 +2,11 @@ package com.company.warehouse.simulation;
 
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import com.amalgamasimulation.engine.Engine;
 import com.amalgamasimulation.geometry.Point;
@@ -115,9 +117,10 @@ public class Model extends com.amalgamasimulation.engine.Model {
         for (var scenarioGate : scenario.getGates()) {
             final var direction = scenarioGate.getDirection();
             final var entrance = mapping.nodesMap.get(scenarioGate.getEntrance());
-            scenarioGate.getPlaces().stream()
-                    .forEach(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)));
-            final var gate = new Gate(direction, entrance);
+            final var places = scenarioGate.getPlaces().stream()
+                    .map(scenarioNode -> newPalletPosition(scenarioNode, direction == Direction.OUT))
+                    .collect(Collectors.toCollection(LinkedList::new));
+            final var gate = new Gate(direction, entrance, new StorageArea(places));
             getGatesInDirection(direction).add(gate);
         }
     }
@@ -174,7 +177,7 @@ public class Model extends com.amalgamasimulation.engine.Model {
         for (var d : Direction.VALUES) {
             dispatcher.truckArrived(new Truck(d, scenario.getTruckCapacity()));
         }
-        engine().scheduleRelative(scenario.getTruckArrivalIntervalMin() * 20 * minute(), this::spawnTrucks);
+        engine().scheduleRelative(scenario.getTruckArrivalIntervalMin() * minute(), this::spawnTrucks);
     }
 
 	/**
