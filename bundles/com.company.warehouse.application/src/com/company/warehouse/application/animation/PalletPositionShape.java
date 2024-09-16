@@ -12,7 +12,10 @@ public class PalletPositionShape extends GroupShape {
     public PalletPositionShape(PalletPosition p) {
         super(p.getNode().getPoint());
         withShape(new RectangleShape(() -> new Point(-5, -5), () -> 10.0, () -> 10.0)
-                .withLineColor(Color.gray)
+        		// tag::withLineColor[]
+//                .withLineColor(Color.gray)
+                .withLineColor(() -> p.isReserved() ? Color.red : Color.gray)
+        		// end::withLineColor[]
                 .withFillColor(() -> p.isAvailableFor(false) ? Color.green : Color.gray)
                 );
     }
