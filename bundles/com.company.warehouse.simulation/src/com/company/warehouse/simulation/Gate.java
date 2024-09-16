@@ -7,7 +7,9 @@ import com.company.warehouse.datamodel.Direction;
 import com.company.warehouse.simulation.equipment.Truck;
 import com.company.warehouse.simulation.graph.Node;
 
+// tag::class[]
 public class Gate {
+	// end::class[]
 
     /**
      * Whether this gate is incoming or outgoing.
@@ -19,15 +21,25 @@ public class Gate {
      */
     private final Node entrance;
 
+    // tag::storageArea[]
+    private final StorageArea storageArea;
+    public StorageArea getStorageArea() {
+        return storageArea;
+    }
+    // end::storageArea[]
+
     /**
      * A parked truck.
      */
     private Truck truck;
 
-    public Gate(Direction direction, Node entrance) {
+    // tag::constructor[]
+    public Gate(Direction direction, Node entrance, StorageArea storage) {
         this.direction = direction;
         this.entrance = entrance;
+        this.storageArea = storage;
     }
+    // end::constructor[]
 
     public Direction getDirection() {
         return direction;
