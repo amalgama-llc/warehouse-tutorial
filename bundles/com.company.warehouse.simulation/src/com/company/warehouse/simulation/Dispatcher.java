@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 
 public class Dispatcher {
@@ -75,7 +76,13 @@ public class Dispatcher {
     }
 
     private void handleTruckOnGate(Truck truck, Gate gate, Runnable onComplete) {
-        handleTruck(truck, gate, onComplete);
+        if (gate.getDirection() == Direction.IN) {
+        	// unload the truck and then unload the gate storage
+            handleTruck(truck, gate, () -> handleGateArea(gate, onComplete));
+        } else {
+        	// load the gate storage and then load the truck
+            handleGateArea(gate, () -> handleTruck(truck, gate, onComplete));
+        }
     }
 
     private void handleTruck(Truck truck, Gate gate, Runnable onComplete) {
@@ -86,6 +93,48 @@ public class Dispatcher {
                 gate.unparkTruck(truck);
                 onComplete.run();
             })
+        );
+    }
+
+    /**
+     * (Un)loads gate storage.
+     */
+    private void handleGateArea(Gate gate, Runnable onComplete) {
+        final var loading = gate.getDirection() == Direction.OUT;
+        final var places = gate.getStorageArea()
+            .getPlacesAvailableFor(loading)
+            .toList();
+        
+        final var placeCount = new AtomicInteger(places.size());
+        
+        if (placeCount.get() == 0) {
+        	onComplete.run();
+        	return;
+        }
+        
+        for (var p : places) {
+            handleGatePlace(loading, p, () -> {
+                if (placeCount.decrementAndGet() == 0) {
+                    onComplete.run();
+                }
+            });
+        }
+    }
+    
+    /**
+     * Gets corresponding place in the main storage.
+     * Gets a forklift.
+     * Moves a pallet.
+     * Releases the forklift.
+     */
+    private void handleGatePlace(boolean loading, PalletPosition gatePlace, Runnable onComplete) {
+        model.getMainStorage().reservePlace(loading, storagePlace ->
+            requestForklift((f, releaser) ->
+                new MovePalletTask(engine, f, gatePlace, storagePlace, loading).start(() -> {
+                    releaser.run();
+                    onComplete.run();
+                })
+            )
         );
     }
 

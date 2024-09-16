@@ -55,6 +55,11 @@ public class Model extends com.amalgamasimulation.engine.Model {
         return allPositions;
     }
 
+    private StorageArea mainStorage;
+    public StorageArea getMainStorage() {
+        return mainStorage;
+    }
+
     private final Map<Direction, List<Gate>> gatesByDirection = Map.of(
             Direction.IN, new ArrayList<>(),
             Direction.OUT, new ArrayList<>()
@@ -109,8 +114,11 @@ public class Model extends com.amalgamasimulation.engine.Model {
     }
 
     private void initializeMainStorage() {
-        scenario.getStoragePlaces().stream()
-                .forEach(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)));
+        final var places = scenario.getStoragePlaces().stream()
+                .map(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)))
+                .collect(Collectors.toCollection(LinkedList::new));
+        
+        mainStorage = new StorageArea(places);
     }
 
     private void initializeGates() {
@@ -118,7 +126,8 @@ public class Model extends com.amalgamasimulation.engine.Model {
             final var direction = scenarioGate.getDirection();
             final var entrance = mapping.nodesMap.get(scenarioGate.getEntrance());
             final var places = scenarioGate.getPlaces().stream()
-                    .map(scenarioNode -> newPalletPosition(scenarioNode, direction == Direction.OUT))
+//                    .map(scenarioNode -> newPalletPosition(scenarioNode, direction == Direction.OUT))
+                    .map(scenarioNode -> newPalletPosition(scenarioNode, false))
                     .collect(Collectors.toCollection(LinkedList::new));
             final var gate = new Gate(direction, entrance, new StorageArea(places));
             getGatesInDirection(direction).add(gate);
