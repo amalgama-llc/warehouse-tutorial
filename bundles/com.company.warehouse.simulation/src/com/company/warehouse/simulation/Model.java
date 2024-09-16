@@ -63,6 +63,13 @@ public class Model extends com.amalgamasimulation.engine.Model {
     }
     // end::allPositions-prop[]
 
+    // tag::mainStorage[]
+    private StorageArea mainStorage;
+    public StorageArea getMainStorage() {
+        return mainStorage;
+    }
+    // end::mainStorage[]
+
     // tag::gatesByDirection[]
     private final Map<Direction, List<Gate>> gatesByDirection = Map.of(
             Direction.IN, new ArrayList<>(),
@@ -129,10 +136,15 @@ public class Model extends com.amalgamasimulation.engine.Model {
         return p;
     }
 
+    // tag::initializeMainStorage[]
     private void initializeMainStorage() {
-        scenario.getStoragePlaces().stream()
-                .forEach(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)));
+        final var places = scenario.getStoragePlaces().stream()
+                .map(scenarioNode -> newPalletPosition(scenarioNode, randomTrue(0.5)))
+                .collect(Collectors.toCollection(LinkedList::new));
+        
+        mainStorage = new StorageArea(places);
     }
+    // end::initializeMainStorage[]
 
 	// tag::initializeGates[]
     private void initializeGates() {
@@ -140,7 +152,10 @@ public class Model extends com.amalgamasimulation.engine.Model {
             final var direction = scenarioGate.getDirection();
             final var entrance = mapping.nodesMap.get(scenarioGate.getEntrance());
             final var places = scenarioGate.getPlaces().stream()
-                    .map(scenarioNode -> newPalletPosition(scenarioNode, direction == Direction.OUT))
+            		// tag::initializeGates-newPalletPosition[]
+//                    .map(scenarioNode -> newPalletPosition(scenarioNode, direction == Direction.OUT))
+                    .map(scenarioNode -> newPalletPosition(scenarioNode, false))
+            		// end::initializeGates-newPalletPosition[]
                     .collect(Collectors.toCollection(LinkedList::new));
             final var gate = new Gate(direction, entrance, new StorageArea(places));
             getGatesInDirection(direction).add(gate);
