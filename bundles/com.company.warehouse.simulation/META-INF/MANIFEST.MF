@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Automatic-Module-Name: com.company.warehouse.simulation
+Bundle-SymbolicName: com.company.warehouse.simulation;singleton:=true
+Bundle-Name: Simulation
+Bundle-Version: 1.0.0
+Bundle-Vendor: Amalgama
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Export-Package: com.company.warehouse.simulation,com.company.warehouse.s
+ imulation.graph,com.company.warehouse.simulation.graph.agents,com.compa
+ ny.warehouse.simulation.graph.agents.stats.slots
+Require-Bundle: com.company.warehouse.datamodel,com.amalgamasimulation.c
+ alendardatamodel,com.amalgamasimulation.ecoreutils,com.amalgamasimulati
+ on.engine,com.amalgamasimulation.geometry,com.amalgamasimulation.graph,
+ com.amalgamasimulation.graphagent,com.amalgamasimulation.randomdatamode
+ l,com.amalgamasimulation.timeseriesdatamodel,com.amalgamasimulation.uti
+ ls,com.amalgamasimulation.core,com.amalgamasimulation.desktop.ui.editor
+

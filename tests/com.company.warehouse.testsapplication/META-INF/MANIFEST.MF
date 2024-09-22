@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Testsapplication
+Bundle-SymbolicName: com.company.warehouse.testsapplication;singleton:=t
+ rue
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Amalgama
+Require-Bundle: org.eclipse.core.runtime;bundle-version="0.0.0",org.ecli
+ pse.swt;bundle-version="0.0.0",org.eclipse.e4.ui.model.workbench;bundle
+ -version="0.0.0",org.eclipse.jface;bundle-version="0.0.0",org.eclipse.e
+ 4.ui.services;bundle-version="0.0.0",org.eclipse.e4.ui.workbench;bundle
+ -version="0.0.0",org.eclipse.e4.core.di;bundle-version="0.0.0",org.ecli
+ pse.e4.ui.di;bundle-version="0.0.0",org.eclipse.e4.core.contexts;bundle
+ -version="0.0.0",com.amalgamasimulation.viewupdater.service,com.amalgam
+ asimulation.engine.service,com.amalgamasimulation.desktop.utils,com.ama
+ lgamasimulation.desktop.ui,com.amalgamasimulation.desktop.ui.editor,com
+ .company.warehouse.application,com.amalgamasimulation.viewupdater,org.j
+ unit,com.company.warehouse.tests,junit-jupiter-api,org.opentest4j,com.a
+ malgamasimulation.engine,com.company.warehouse.simulation
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Import-Package: jakarta.annotation,jakarta.inject
+Automatic-Module-Name: com.company.warehouse.testsapplication
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: com.company.warehouse.testsapplication.Activator
+

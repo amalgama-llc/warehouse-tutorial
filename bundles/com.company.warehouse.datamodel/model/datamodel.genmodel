@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/com.company.warehouse.datamodel/src-gen" creationIcons="false"
+    editDirectory="/com.company.warehouse.datamodel.edit/src-gen" editorDirectory="/com.company.warehouse.datamodel.editor/src-gen"
+    modelPluginID="com.company.warehouse.datamodel" modelName="Datamodel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0"
+    copyrightFields="false" usedGenPackages="../../com.amalgamasimulation.ecoreutils/model/ecoreutils.genmodel#//ecoreutils"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>datamodel.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Datamodel" basePackage="com.company.warehouse" disposableProviderFactory="true"
+      ecorePackage="datamodel.ecore#/">
+    <genClasses ecoreClass="datamodel.ecore#//Scenario">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Scenario/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Scenario/beginDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Scenario/endDate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodel.ecore#//Scenario/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodel.ecore#//Scenario/arcs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodel.ecore#//Scenario/agents"/>
+    </genClasses>
+    <genClasses ecoreClass="datamodel.ecore#//Arc">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Arc/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Arc/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference datamodel.ecore#//Arc/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference datamodel.ecore#//Arc/dest"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodel.ecore#//Arc/points"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference datamodel.ecore#//Arc/scenario"/>
+    </genClasses>
+    <genClasses ecoreClass="datamodel.ecore#//Node">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Node/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Node/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Node/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Node/x"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference datamodel.ecore#//Node/scenario"/>
+    </genClasses>
+    <genClasses ecoreClass="datamodel.ecore#//Point">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference datamodel.ecore#//Point/arc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Point/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Point/x"/>
+    </genClasses>
+    <genClasses ecoreClass="datamodel.ecore#//Agent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Agent/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Agent/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Agent/included"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference datamodel.ecore#//Agent/basePosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodel.ecore#//Agent/velocity"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodel.ecore#//Agent/scenario"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

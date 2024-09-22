@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="com.company.warehouse.testsapplication" id="com.company.warehouse.testsapplication.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" type="mixed" includeLaunchers="true" autoIncludeRequirements="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-clearPersistedState
+-nl en
+      </programArgs>
+      <vmArgs>-Dosgi.framework.extensions=org.eclipse.fx.osgi -Dorg.eclipse.swt.graphics.Resource.reportNonDisposed=false
+      </vmArgs>
+      <vmArgsLin>-Defxclipse.java-modules.dir=${JAVAFX_HOME}/lib
+      </vmArgsLin>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts -Defxclipse.java-modules.dir=/Applications/javafx-sdk-21.0.2/lib
+      </vmArgsMac>
+      <vmArgsWin>-Defxclipse.java-modules.dir=&quot;${env_var:JAVAFX_HOME}/lib&quot;
+      </vmArgsWin>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <launcher>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+      <plugin id="com.company.warehouse.testsapplication"/>
+   </plugins>
+   
+   <features>
+      <feature id="org.eclipse.e4.rcp" installMode="root"/>
+      <feature id="org.eclipse.emf.ecore" installMode="root"/>
+      <feature id="org.eclipse.emf.common" installMode="root"/>
+      <feature id="org.eclipse.fx.runtime.min.feature" installMode="root"/>
+   </features>
+
+
+</product>
