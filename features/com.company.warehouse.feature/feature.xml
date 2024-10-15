@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="com.company.warehouse.feature" label="Feature" version="1.0.0.qualifier">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin download-size="0" id="com.company.warehouse.datamodel" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="com.company.warehouse.application" install-size="0" unpack="false" version="0.0.0"/>
+
+   <plugin download-size="0" id="com.company.warehouse.simulation" install-size="0" unpack="false" version="0.0.0"/>
+
+   <requires>
+      <import plugin="com.google.errorprone.annotations"/>
+   </requires>
+
+   </feature>

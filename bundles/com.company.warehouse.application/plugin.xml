@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.e4.ui.workbench.swt.E4Application"
+            name="Warehouse">
+         <property
+               name="applicationCSS"
+               value="platform:/plugin/com.company.warehouse.application/css/default.css">
+         </property>
+         <property
+               name="appName"
+               value="Warehouse">
+         </property>
+         <property
+               name="lifeCycleURI"
+               value="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.SplashHandler">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
+
+
+

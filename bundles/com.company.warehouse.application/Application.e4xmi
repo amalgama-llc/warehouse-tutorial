@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><application:Application xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmlns:ui="http://www.eclipse.org/ui/2010/UIModel/application/ui" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingContexts="_c3AF2cjYEeSyMNYR5xypkQ" elementId="org.eclipse.e4.application" xmi:id="_c3AF0MjYEeSyMNYR5xypkQ" xmi:version="2.0">
+  <children elementId="org.eclipse.e4.window.main" height="400" label="Warehouse" width="500" xmi:id="_c3AF0cjYEeSyMNYR5xypkQ" xsi:type="basic:TrimmedWindow">
+    <tags>shellMaximized</tags>
+    <children elementId="com.company.warehouse.application.perspectivestack.0" xmi:id="_pzIREBVhEey0Bq8_SOFODw" xsi:type="advanced:PerspectiveStack"/>
+    <mainMenu elementId="com.company.warehouse.application.menu.0" xmi:id="_bJ-noBVnEey0Bq8_SOFODw">
+      <children elementId="com.company.warehouse.application.menu.file" label="%com.company.warehouse.application.menu.file" xmi:id="_mhM-kBVnEey0Bq8_SOFODw" xsi:type="menu:Menu">
+        <children command="_q-m-ABVnEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.new" iconURI="platform:/plugin/com.company.warehouse.application/icons/new.png" label="%com.company.warehouse.application.handledmenuitem.new" xmi:id="_jE6BYBVoEey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem"/>
+        <children command="_q9HwQBVnEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.open" iconURI="platform:/plugin/com.company.warehouse.application/icons/open.png" label="%com.company.warehouse.application.handledmenuitem.open" xmi:id="_M9l5YGcUEeyMy6zCUSbDKw" xsi:type="menu:HandledMenuItem"/>
+        <children command="_q575YBVnEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.save" iconURI="platform:/plugin/com.company.warehouse.application/icons/save.png" label="%com.company.warehouse.application.handledmenuitem.save" xmi:id="_kzAh8BVoEey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem"/>
+        <children command="_q7pwoBVnEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.saveAs" iconURI="platform:/plugin/com.company.warehouse.application/icons/save as.png" label="%com.company.warehouse.application.handledmenuitem.saveAs" xmi:id="_k20q8BVoEey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem"/>
+        <children elementId="com.company.warehouse.application.menuseparator.0" xmi:id="_ljOd8BVoEey0Bq8_SOFODw" xsi:type="menu:MenuSeparator"/>
+        <children elementId="com.company.warehouse.application.handledmenuitem.recentFiles" label="%com.company.warehouse.application.handledmenuitem.recentFiles" xmi:id="_bHOGgGcUEeyMy6zCUSbDKw" xsi:type="menu:DirectMenuItem">
+          <visibleWhen contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.RecentFilesListMenuItemIsVisibleExpression" xmi:id="_rMe54GcUEeyMy6zCUSbDKw" xsi:type="ui:ImperativeExpression"/>
+        </children>
+        <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.CreateMenuItemLastScenarioHandler" elementId="com.company.warehouse.application.dynamicmenucontribution.0" xmi:id="_clgpcGcUEeyMy6zCUSbDKw" xsi:type="menu:DynamicMenuContribution"/>
+        <children command="_qh2JgBVnEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.exit" iconURI="platform:/plugin/com.company.warehouse.application/icons/exit.png" label="%com.company.warehouse.application.handledmenuitem.exit" xmi:id="_lz268BVoEey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem"/>
+      </children>
+      <children elementId="com.company.warehouse.application.menu.additionalFunction" label="%com.company.warehouse.application.menu.additionalFunction" xmi:id="_m2SdwBVnEey0Bq8_SOFODw" xsi:type="menu:Menu">
+        <children command="_qvk84BX-Eey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.check" iconURI="platform:/plugin/com.company.warehouse.application/icons/check.png" label="%com.company.warehouse.application.handledmenuitem.check" xmi:id="_z54acBVoEey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem"/>
+        <children command="_reqQcBX-Eey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.resetPerspective" iconURI="platform:/plugin/com.company.warehouse.application/icons/windows_back.png" label="%com.company.warehouse.application.handledmenuitem.resetPerspective" xmi:id="_z-hC0BVoEey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem"/>
+        <children elementId="com.company.warehouse.application.menuseparator.2" xmi:id="_1PWYkBVoEey0Bq8_SOFODw" xsi:type="menu:MenuSeparator"/>
+        <children elementId="com.company.warehouse.application.menu.language" iconURI="platform:/plugin/com.company.warehouse.application/icons/language.png" label="%com.company.warehouse.application.menu.language" xmi:id="_eUP6EBX9Eey0Bq8_SOFODw" xsi:type="menu:Menu">
+          <children command="_rYjocBX-Eey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.english" iconURI="platform:/plugin/com.company.warehouse.application/icons/english.png" label="%com.company.warehouse.application.handledmenuitem.english" xmi:id="_fM-44BX9Eey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem">
+            <parameters elementId="com.company.warehouse.application.parameter.0" name="com.company.warehouse.application.commandparameter.parameter1" value="en" xmi:id="_Ey8_MBX_Eey0Bq8_SOFODw"/>
+          </children>
+          <children command="_rYjocBX-Eey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.russian" iconURI="platform:/plugin/com.company.warehouse.application/icons/russian.png" label="%com.company.warehouse.application.handledmenuitem.russian" xmi:id="_fjSgEBX9Eey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem">
+            <parameters elementId="com.company.warehouse.application.parameter.1" name="com.company.warehouse.application.commandparameter.parameter1" value="ru" xmi:id="_FdTjwBX_Eey0Bq8_SOFODw"/>
+          </children>
+        </children>
+      </children>
+      <children elementId="com.company.warehouse.application.menu.mode" label="%com.company.warehouse.application.menu.mode" xmi:id="_nLU5oBVnEey0Bq8_SOFODw" xsi:type="menu:Menu">
+        <children command="_IK7OUBYEEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.editor" iconURI="platform:/plugin/com.company.warehouse.application/icons/editing.png" label="%com.company.warehouse.application.handledmenuitem.editor" selected="true" type="Check" xmi:id="_0YpaEBVoEey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem">
+          <parameters elementId="com.company.warehouse.application.parameter.2" name="com.company.warehouse.application.commandparameter.switchPerspective" value="EDITOR" xmi:id="_eadLkBYEEey0Bq8_SOFODw"/>
+        </children>
+        <children command="_IK7OUBYEEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.simulation" iconURI="platform:/plugin/com.company.warehouse.application/icons/simulation.png" label="%com.company.warehouse.application.handledmenuitem.simulation" selected="false" type="Check" xmi:id="_0b2fEBVoEey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem">
+          <parameters elementId="com.company.warehouse.application.parameter.3" name="com.company.warehouse.application.commandparameter.switchPerspective" value="SIMULATION" xmi:id="_fDxOUBYEEey0Bq8_SOFODw"/>
+        </children>
+        
+      </children>
+      <children elementId="com.company.warehouse.application.menu.help" label="%com.company.warehouse.application.menu.help" xmi:id="_nk6eUBVnEey0Bq8_SOFODw" xsi:type="menu:Menu">
+        <children command="_IoDPMBYEEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledmenuitem.about" iconURI="platform:/plugin/com.company.warehouse.application/icons/logo_16.png" label="%com.company.warehouse.application.handledmenuitem.about" xmi:id="_0iaaEBVoEey0Bq8_SOFODw" xsi:type="menu:HandledMenuItem"/>
+        
+      </children>
+    </mainMenu>
+    <trimBars elementId="com.company.warehouse.application.trimbar.0" xmi:id="_9lAb8BVoEey0Bq8_SOFODw">
+      <children elementId="com.company.warehouse.application.toolbar.0" xmi:id="_9-FqUBVoEey0Bq8_SOFODw" xsi:type="menu:ToolBar">
+        <children command="_P-yLMBYPEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledtoolitem.undo" iconURI="platform:/plugin/com.company.warehouse.application/icons/undo.png" label="%com.company.warehouse.application.handledtoolitem.undo" xmi:id="_-5h-4BVoEey0Bq8_SOFODw" xsi:type="menu:HandledToolItem"/>
+        <children command="_QQQVsBYPEey0Bq8_SOFODw" elementId="com.company.warehouse.application.handledtoolitem.redo" iconURI="platform:/plugin/com.company.warehouse.application/icons/redo.png" label="%com.company.warehouse.application.handledtoolitem.redo" xmi:id="__NgDwBVoEey0Bq8_SOFODw" xsi:type="menu:HandledToolItem"/>
+      </children>
+      <children elementId="com.amalgamasimulation.enginetoolbar" xmi:id="_-XGnQBVoEey0Bq8_SOFODw" xsi:type="menu:ToolBar">
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.RunEngineHandler" elementId="com.company.warehouse.application.handledtoolitem.run" iconURI="platform:/plugin/com.company.warehouse.application/icons/Run.png" label="%com.company.warehouse.application.handledtoolitem.run" tooltip="%com.company.warehouse.application.handledtoolitem.run" xmi:id="_4RVvIKRQEey_u7_znedGig" xsi:type="menu:DirectToolItem"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.StopHandler" elementId="com.company.warehouse.application.handledtoolitem.stop" iconURI="platform:/plugin/com.company.warehouse.application/icons/Stop.png" label="%com.company.warehouse.application.handledtoolitem.stop" tooltip="%com.company.warehouse.application.handledtoolitem.stop" xmi:id="_4orREKRQEey_u7_znedGig" xsi:type="menu:DirectToolItem"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.SimulateSlowerHandler" elementId="com.company.warehouse.application.handledtoolitem.slower" iconURI="platform:/plugin/com.company.warehouse.application/icons/Slower.png" label="%com.company.warehouse.application.handledtoolitem.slower" tooltip="%com.company.warehouse.application.handledtoolitem.slower" xmi:id="_4qsqUKRQEey_u7_znedGig" xsi:type="menu:DirectToolItem"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.TimeScaleToolControl" elementId="com.company.warehouse.application.toolcontrol.1" xmi:id="_-DrTsBYSEey0Bq8_SOFODw" xsi:type="menu:ToolControl"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.SimulateFasterHandler" elementId="com.company.warehouse.application.handledtoolitem.faster" iconURI="platform:/plugin/com.company.warehouse.application/icons/Faster.png" label="%com.company.warehouse.application.handledtoolitem.faster" tooltip="%com.company.warehouse.application.handledtoolitem.faster" xmi:id="_4vjVIKRQEey_u7_znedGig" xsi:type="menu:DirectToolItem"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.ToggleFastestModeHandler" elementId="com.company.warehouse.application.handledtoolitem.fastest" iconURI="platform:/plugin/com.company.warehouse.application/icons/Fastest.png" label="%com.company.warehouse.application.handledtoolitem.fastest" tooltip="%com.company.warehouse.application.handledtoolitem.fastest" type="Check" xmi:id="_4xaWUKRQEey_u7_znedGig" xsi:type="menu:DirectToolItem"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.ScheduleStopCommandHandler" elementId="com.company.warehouse.application.handledtoolitem.schedulestop" iconURI="platform:/plugin/com.company.warehouse.application/icons/ScheduleStop.png" label="%com.company.warehouse.application.handledtoolitem.schedulestop" tooltip="%com.company.warehouse.application.handledtoolitem.schedulestop" xmi:id="_4zLQ4KRQEey_u7_znedGig" xsi:type="menu:DirectToolItem"/>
+      </children>
+      <children elementId="com.amalgamasimulation.updatertoolbar" xmi:id="__kTY8BYSEey0Bq8_SOFODw" xsi:type="menu:ToolBar">
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.UpdateViewHandler" elementId="com.company.warehouse.application.handledtoolitem.updateview" iconURI="platform:/plugin/com.company.warehouse.application/icons/Update.png" label="%com.company.warehouse.application.handledtoolitem.updateview" tooltip="%com.company.warehouse.application.handledtoolitem.updateview" xmi:id="_5BFKAKRQEey_u7_znedGig" xsi:type="menu:DirectToolItem"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.ToggleAutoUpdateViewHandler" elementId="com.company.warehouse.application.handledtoolitem.autoupdate" iconURI="platform:/plugin/com.company.warehouse.application/icons/AutoUpdate.png" label="%com.company.warehouse.application.handledtoolitem.autoupdate" selected="true" tooltip="%com.company.warehouse.application.handledtoolitem.autoupdate" type="Check" xmi:id="_5C8yQKRQEey_u7_znedGig" xsi:type="menu:DirectToolItem"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.TimeToolControl" elementId="com.company.warehouse.application.toolcontrol.1" xmi:id="_BNJmEBYTEey0Bq8_SOFODw" xsi:type="menu:ToolControl"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.DateToolControl" elementId="com.company.warehouse.application.toolcontrol.1" xmi:id="_BPJKIBYTEey0Bq8_SOFODw" xsi:type="menu:ToolControl"/>
+        <children contributionURI="bundleclass://com.amalgamasimulation.engine.controls/com.amalgamasimulation.engine.controls.handlers.FPSToolControl" elementId="com.company.warehouse.application.toolcontrol.1" xmi:id="_BRHgEBYTEey0Bq8_SOFODw" xsi:type="menu:ToolControl"/>
+      </children>
+    </trimBars>
+    <trimBars elementId="com.company.warehouse.application.trimbar.1" side="Bottom" xmi:id="_wTWUMBYOEey0Bq8_SOFODw">
+      <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.BottomToolControlHandler" elementId="com.company.warehouse.application.toolcontrol.0" xmi:id="_fAeowBYPEey0Bq8_SOFODw" xsi:type="menu:ToolControl"/>
+    </trimBars>
+  </children>
+  <handlers command="_qh2JgBVnEey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.ExitHandler" elementId="com.company.warehouse.application.handler.exit" xmi:id="_pNciYBVnEey0Bq8_SOFODw"/>
+  <handlers command="_q575YBVnEey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.SaveHandler" elementId="com.company.warehouse.application.handler.save" xmi:id="_p6WrsBVnEey0Bq8_SOFODw"/>
+  <handlers command="_q7pwoBVnEey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.SaveAsHandler" elementId="com.company.warehouse.application.handler.saveAs" xmi:id="_p8xtkBVnEey0Bq8_SOFODw"/>
+  <handlers command="_q9HwQBVnEey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.OpenHandler" elementId="com.company.warehouse.application.handler.open" xmi:id="_p-Y3IBVnEey0Bq8_SOFODw"/>
+  <handlers command="_q-m-ABVnEey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.NewHandler" elementId="com.company.warehouse.application.handler.new" xmi:id="_p_xXMBVnEey0Bq8_SOFODw"/>
+  <handlers command="_qvk84BX-Eey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.ScenarioValidationHandler" elementId="com.company.warehouse.application.handler.check" xmi:id="_sSrHUBX-Eey0Bq8_SOFODw"/>
+  <handlers command="_rYjocBX-Eey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.SetLanguageHandler" elementId="com.company.warehouse.application.handler.language" xmi:id="_sllcQBX-Eey0Bq8_SOFODw"/>
+  <handlers command="_reqQcBX-Eey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.ResetPerspectiveHandler" elementId="com.company.warehouse.application.handler.resetPerspective" xmi:id="_so2ysBX-Eey0Bq8_SOFODw"/>
+  <handlers command="_IK7OUBYEEey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.SwitchPerspectiveHandler" elementId="com.company.warehouse.application.handler.switchPerspective" xmi:id="_JBTcsBYEEey0Bq8_SOFODw"/>
+  <handlers command="_IoDPMBYEEey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.AboutHandler" elementId="com.company.warehouse.application.handler.about" xmi:id="_JWQZABYEEey0Bq8_SOFODw"/>
+  
+  <handlers command="_P-yLMBYPEey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.UndoHandler" elementId="com.company.warehouse.application.handler.undo" xmi:id="_XTThsBYPEey0Bq8_SOFODw"/>
+  <handlers command="_QQQVsBYPEey0Bq8_SOFODw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.RedoHandler" elementId="com.company.warehouse.application.handler.redo" xmi:id="_XkmGABYPEey0Bq8_SOFODw"/>
+  <handlers command="_jWhtcGcYEeyMy6zCUSbDKw" contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.handlers.EscKeyHandler" elementId="com.company.warehouse.application.handler.1" xmi:id="_irbiAGcYEeyMy6zCUSbDKw"/>
+  <bindingTables bindingContext="_c3AF2cjYEeSyMNYR5xypkQ" elementId="com.company.warehouse.application.bindingtable.0" xmi:id="_f__PcGcYEeyMy6zCUSbDKw">
+    <bindings command="_jWhtcGcYEeyMy6zCUSbDKw" elementId="com.company.warehouse.application.keybinding.esc" keySequence="ESC" xmi:id="_hVr3EGcYEeyMy6zCUSbDKw">
+      <tags>type:user</tags>
+    </bindings>
+    <bindings command="_P-yLMBYPEey0Bq8_SOFODw" elementId="com.company.warehouse.application.keybinding.undo" keySequence="CTRL+Z" xmi:id="_UJdcsKN5EeyIRo9OOTLqFQ">
+      <tags>type:user</tags>
+    </bindings>
+    <bindings command="_QQQVsBYPEey0Bq8_SOFODw" elementId="com.company.warehouse.application.keybinding.redo" keySequence="CTRL+Y" xmi:id="_UMrIwKN5EeyIRo9OOTLqFQ">
+      <tags>type:user</tags>
+    </bindings>
+    <bindings command="_q575YBVnEey0Bq8_SOFODw" elementId="com.company.warehouse.application.keybinding.save" keySequence="CTRL+S" xmi:id="_UP9GQKN5EeyIRo9OOTLqFQ">
+      <tags>type:user</tags>
+    </bindings>
+  </bindingTables>
+  <rootContext elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows" xmi:id="_c3AF2cjYEeSyMNYR5xypkQ">
+    <children elementId="org.eclipse.ui.contexts.window" name="In Windows" xmi:id="_c3AF2sjYEeSyMNYR5xypkQ"/>
+    <children elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs" xmi:id="_c3AF28jYEeSyMNYR5xypkQ"/>
+  </rootContext>
+  <snippets elementId="com.company.warehouse.application.perspective.editor" label="%com.company.warehouse.application.perspective.editor" xmi:id="_JMaxsBVuEey0Bq8_SOFODw" xsi:type="advanced:Perspective">
+    <children containerData="1000" elementId="com.company.warehouse.application.partsashcontainer.0" horizontal="true" xmi:id="_JMaxsRVuEey0Bq8_SOFODw" xsi:type="basic:PartSashContainer">
+      <children containerData="350" elementId="com.company.warehouse.application.partsashcontainer.1" xmi:id="_JMaxshVuEey0Bq8_SOFODw" xsi:type="basic:PartSashContainer">
+        <children elementId="com.company.warehouse.application.partstack.0" xmi:id="_JMaxsxVuEey0Bq8_SOFODw" xsi:type="basic:PartStack">
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.editor.TreePart" elementId="com.company.warehouse.application.part.tree" iconURI="platform:/plugin/com.company.warehouse.application/icons/producte_structure.png" label="%com.company.warehouse.application.part.tree" xmi:id="_JMaxtBVuEey0Bq8_SOFODw" xsi:type="basic:Part"/>
+        </children>
+        <children elementId="com.company.warehouse.application.partstack.4" xmi:id="_DI6OgBYbEey0Bq8_SOFODw" xsi:type="basic:PartStack">
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.editor.ObjectsPart" elementId="com.company.warehouse.application.part.objects" iconURI="platform:/plugin/com.company.warehouse.application/icons/object.png" label="%com.company.warehouse.application.part.objects" xmi:id="_DhV8oBYbEey0Bq8_SOFODw" xsi:type="basic:Part"/>
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.editor.ErrorsPart" elementId="com.company.warehouse.application.part.errors" iconURI="platform:/plugin/com.company.warehouse.application/icons/errors.png" label="%com.company.warehouse.application.part.errors" xmi:id="_JMaxuhVuEey0Bq8_SOFODw" xsi:type="basic:Part"/>
+        </children>
+      </children>
+      <children containerData="650" elementId="com.company.warehouse.application.partsashcontainer.2" xmi:id="_JMaxtRVuEey0Bq8_SOFODw" xsi:type="basic:PartSashContainer">
+        <children containerData="550" elementId="com.company.warehouse.application.partstack.1" xmi:id="_JMaxthVuEey0Bq8_SOFODw" xsi:type="basic:PartStack">
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.editor.MapPart" elementId="com.company.warehouse.application.part.map" iconURI="platform:/plugin/com.company.warehouse.application/icons/animation.png" label="%com.company.warehouse.application.part.map" xmi:id="_JMaxtxVuEey0Bq8_SOFODw" xsi:type="basic:Part"/>
+        </children>
+        <children containerData="250" elementId="com.company.warehouse.application.partstack.2" xmi:id="_JMaxuBVuEey0Bq8_SOFODw" xsi:type="basic:PartStack">
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.editor.PropertiesPart" elementId="com.company.warehouse.application.part.properties" iconURI="platform:/plugin/com.company.warehouse.application/icons/properties.png" label="%com.company.warehouse.application.part.properties" xmi:id="_JMaxuRVuEey0Bq8_SOFODw" xsi:type="basic:Part"/>
+        </children>
+      </children>
+    </children>
+  </snippets>
+  <snippets elementId="com.company.warehouse.application.perspective.simulation" label="%com.company.warehouse.application.perspective.simulation" xmi:id="_JMd1ABVuEey0Bq8_SOFODw" xsi:type="advanced:Perspective">
+    <children containerData="1000" elementId="com.company.warehouse.application.partsashcontainer.3" horizontal="true" xmi:id="_JMd1ARVuEey0Bq8_SOFODw" xsi:type="basic:PartSashContainer">
+      <children containerData="150" elementId="com.company.warehouse.application.partsashcontainer.4" xmi:id="_xKk-IB0UEeyDD7KjvUgQBw" xsi:type="basic:PartSashContainer">
+        <children elementId="com.company.warehouse.application.partstack.5" xmi:id="_x51Q0B0UEeyDD7KjvUgQBw" xsi:type="basic:PartStack">
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.simulation.SimulationStatusPart" elementId="com.amalgama.withouteditor.application.part.simulationstatus" iconURI="platform:/plugin/com.company.warehouse.application/icons/simulationStatus.png" label="%com.company.warehouse.application.part.simulationstatus" xmi:id="_XfekAKN-EeyIRo9OOTLqFQ" xsi:type="basic:Part"/>
+        </children>
+        <children elementId="com.company.warehouse.application.partstack.10" xmi:id="_UWL30KN-EeyIRo9OOTLqFQ" xsi:type="basic:PartStack">
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.simulation.SimulationStatisticsPart" elementId="com.company.warehouse.application.part.summarytable" iconURI="platform:/plugin/com.company.warehouse.application/icons/summaryStats.png" label="%com.company.warehouse.application.part.summarytable" xmi:id="_X0ntkKN-EeyIRo9OOTLqFQ" xsi:type="basic:Part"/>
+        </children>
+      </children>
+      <children containerData="850" elementId="com.company.warehouse.application.partsashcontainer.5" xmi:id="_xhLgQB0UEeyDD7KjvUgQBw" xsi:type="basic:PartSashContainer">
+        <children elementId="com.company.warehouse.application.partstack.6" xmi:id="_0HNHUB0UEeyDD7KjvUgQBw" xsi:type="basic:PartStack">
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.simulation.SimulationPart" elementId="com.company.warehouse.application.part.2dSimulation" iconURI="platform:/plugin/com.company.warehouse.application/icons/animation.png" label="%com.company.warehouse.application.part.2dSimulation" xmi:id="_0iYAYB0UEeyDD7KjvUgQBw" xsi:type="basic:Part"/>
+        </children>
+        <children elementId="com.company.warehouse.application.partstack.3" xmi:id="_28pDYB0UEeyDD7KjvUgQBw" xsi:type="basic:PartStack">
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.simulation.TablePart" elementId="com.company.warehouse.application.part.table" label="%com.company.warehouse.application.part.table" xmi:id="_yspN0B0UEeyDD7KjvUgQBw" xsi:type="basic:Part"/>
+          <children contributionURI="bundleclass://com.company.warehouse.application/com.company.warehouse.application.parts.simulation.GanttChartPart" elementId="com.company.warehouse.application.part.gantChart" iconURI="platform:/plugin/com.company.warehouse.application/icons/ganttChart.png" label="%com.company.warehouse.application.part.ganttChart" xmi:id="_3ZW0kB0UEeyDD7KjvUgQBw" xsi:type="basic:Part"/>
+        </children>
+      </children>
+    </children>
+  </snippets>
+  
+  <commands commandName="%com.company.warehouse.application.command.exit" elementId="com.company.warehouse.application.command.exit" xmi:id="_qh2JgBVnEey0Bq8_SOFODw"/>
+  <commands commandName="%com.company.warehouse.application.command.save" elementId="com.company.warehouse.application.command.save" xmi:id="_q575YBVnEey0Bq8_SOFODw"/>
+  <commands commandName="%com.company.warehouse.application.command.saveAs" elementId="com.company.warehouse.application.command.saveAs" xmi:id="_q7pwoBVnEey0Bq8_SOFODw"/>
+  <commands commandName="%com.company.warehouse.application.command.open" elementId="com.company.warehouse.application.command.open" xmi:id="_q9HwQBVnEey0Bq8_SOFODw"/>
+  <commands commandName="%com.company.warehouse.application.command.new" elementId="com.company.warehouse.application.command.new" xmi:id="_q-m-ABVnEey0Bq8_SOFODw"/>
+  <commands commandName="%com.company.warehouse.application.command.check" elementId="com.company.warehouse.application.command.check" xmi:id="_qvk84BX-Eey0Bq8_SOFODw"/>
+  <commands commandName="%com.company.warehouse.application.command.language" elementId="com.company.warehouse.application.command.language" xmi:id="_rYjocBX-Eey0Bq8_SOFODw">
+    <parameters elementId="com.company.warehouse.application.commandparameter.parameter1" name="language" optional="false" xmi:id="__VQncBX-Eey0Bq8_SOFODw"/>
+  </commands>
+  <commands commandName="%com.company.warehouse.application.command.resetPerspective" elementId="com.company.warehouse.application.command.resetPerspective" xmi:id="_reqQcBX-Eey0Bq8_SOFODw"/>
+  <commands commandName="%com.company.warehouse.application.command.switchPetspective" elementId="com.company.warehouse.application.command.switchPetspective" xmi:id="_IK7OUBYEEey0Bq8_SOFODw">
+    <parameters elementId="com.company.warehouse.application.commandparameter.switchPerspective" name="perspective" optional="false" xmi:id="_RKg_gBYEEey0Bq8_SOFODw"/>
+  </commands>
+  <commands commandName="%com.company.warehouse.application.command.about" elementId="com.company.warehouse.application.command.about" xmi:id="_IoDPMBYEEey0Bq8_SOFODw"/>
+  
+  <commands commandName="%com.company.warehouse.application.command.undo" elementId="com.company.warehouse.application.command.undo" xmi:id="_P-yLMBYPEey0Bq8_SOFODw"/>
+  <commands commandName="%com.company.warehouse.application.command.redo" elementId="com.company.warehouse.application.command.redo" xmi:id="_QQQVsBYPEey0Bq8_SOFODw"/>
+  <commands commandName="Esc" elementId="com.company.warehouse.application.command.esc" xmi:id="_jWhtcGcYEeyMy6zCUSbDKw"/>
+  <addons contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon" elementId="org.eclipse.e4.core.commands.service" xmi:id="_c3AF0sjYEeSyMNYR5xypkQ"/>
+  <addons contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon" elementId="org.eclipse.e4.ui.contexts.service" xmi:id="_c3AF08jYEeSyMNYR5xypkQ"/>
+  <addons contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon" elementId="org.eclipse.e4.ui.bindings.service" xmi:id="_c3AF1MjYEeSyMNYR5xypkQ"/>
+  <addons contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon" elementId="org.eclipse.e4.ui.workbench.commands.model" xmi:id="_c3AF1cjYEeSyMNYR5xypkQ"/>
+  <addons contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon" elementId="org.eclipse.e4.ui.workbench.handler.model" xmi:id="_c3AF1sjYEeSyMNYR5xypkQ"/>
+  <addons contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon" elementId="org.eclipse.e4.ui.workbench.contexts.model" xmi:id="_c3AF18jYEeSyMNYR5xypkQ"/>
+  <addons contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon" elementId="org.eclipse.e4.ui.workbench.bindings.model" xmi:id="_c3AF2MjYEeSyMNYR5xypkQ"/>
+  <addons contributionURI="bundleclass://com.amalgamasimulation.localization/com.amalgamasimulation.localization.Util" elementId="com.company.warehouse.application.addon.0" xmi:id="_Oy_WAKNzEeyIRo9OOTLqFQ"/>
+</application:Application>
