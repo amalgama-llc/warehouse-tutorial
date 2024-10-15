@@ -5,6 +5,8 @@ package com.company.warehouse.datamodel.impl;
 import com.company.warehouse.datamodel.Agent;
 import com.company.warehouse.datamodel.Arc;
 import com.company.warehouse.datamodel.DatamodelPackage;
+import com.company.warehouse.datamodel.Forklift;
+import com.company.warehouse.datamodel.Gate;
 import com.company.warehouse.datamodel.Node;
 import com.company.warehouse.datamodel.Scenario;
 
@@ -24,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -40,6 +43,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.company.warehouse.datamodel.impl.ScenarioImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link com.company.warehouse.datamodel.impl.ScenarioImpl#getArcs <em>Arcs</em>}</li>
  *   <li>{@link com.company.warehouse.datamodel.impl.ScenarioImpl#getAgents <em>Agents</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.impl.ScenarioImpl#getTruckCapacity <em>Truck Capacity</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.impl.ScenarioImpl#getTruckArrivalIntervalMin <em>Truck Arrival Interval Min</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.impl.ScenarioImpl#getForklifts <em>Forklifts</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.impl.ScenarioImpl#getStoragePlaces <em>Storage Places</em>}</li>
+ *   <li>{@link com.company.warehouse.datamodel.impl.ScenarioImpl#getGates <em>Gates</em>}</li>
  * </ul>
  *
  * @generated
@@ -136,6 +144,76 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	protected EList<Agent> agents;
 
 	/**
+	 * The default value of the '{@link #getTruckCapacity() <em>Truck Capacity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTruckCapacity()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int TRUCK_CAPACITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getTruckCapacity() <em>Truck Capacity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTruckCapacity()
+	 * @generated
+	 * @ordered
+	 */
+	protected int truckCapacity = TRUCK_CAPACITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTruckArrivalIntervalMin() <em>Truck Arrival Interval Min</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTruckArrivalIntervalMin()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double TRUCK_ARRIVAL_INTERVAL_MIN_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getTruckArrivalIntervalMin() <em>Truck Arrival Interval Min</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTruckArrivalIntervalMin()
+	 * @generated
+	 * @ordered
+	 */
+	protected double truckArrivalIntervalMin = TRUCK_ARRIVAL_INTERVAL_MIN_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getForklifts() <em>Forklifts</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getForklifts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Forklift> forklifts;
+
+	/**
+	 * The cached value of the '{@link #getStoragePlaces() <em>Storage Places</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStoragePlaces()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Node> storagePlaces;
+
+	/**
+	 * The cached value of the '{@link #getGates() <em>Gates</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Gate> gates;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -159,6 +237,7 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -168,6 +247,7 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -180,6 +260,7 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LocalDateTime getBeginDate() {
 		return beginDate;
 	}
@@ -189,6 +270,7 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBeginDate(LocalDateTime newBeginDate) {
 		LocalDateTime oldBeginDate = beginDate;
 		beginDate = newBeginDate;
@@ -202,6 +284,7 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LocalDateTime getEndDate() {
 		return endDate;
 	}
@@ -211,6 +294,7 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEndDate(LocalDateTime newEndDate) {
 		LocalDateTime oldEndDate = endDate;
 		endDate = newEndDate;
@@ -224,6 +308,7 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Node> getNodes() {
 		if (nodes == null) {
 			nodes = new EObjectContainmentWithInverseEList<Node>(Node.class, this, DatamodelPackage.SCENARIO__NODES,
@@ -237,6 +322,7 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Arc> getArcs() {
 		if (arcs == null) {
 			arcs = new EObjectContainmentWithInverseEList<Arc>(Arc.class, this, DatamodelPackage.SCENARIO__ARCS,
@@ -250,12 +336,103 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Agent> getAgents() {
 		if (agents == null) {
 			agents = new EObjectContainmentWithInverseEList<Agent>(Agent.class, this, DatamodelPackage.SCENARIO__AGENTS,
 					DatamodelPackage.AGENT__SCENARIO);
 		}
 		return agents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getTruckCapacity() {
+		return truckCapacity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTruckCapacity(int newTruckCapacity) {
+		int oldTruckCapacity = truckCapacity;
+		truckCapacity = newTruckCapacity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DatamodelPackage.SCENARIO__TRUCK_CAPACITY,
+					oldTruckCapacity, truckCapacity));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public double getTruckArrivalIntervalMin() {
+		return truckArrivalIntervalMin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTruckArrivalIntervalMin(double newTruckArrivalIntervalMin) {
+		double oldTruckArrivalIntervalMin = truckArrivalIntervalMin;
+		truckArrivalIntervalMin = newTruckArrivalIntervalMin;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DatamodelPackage.SCENARIO__TRUCK_ARRIVAL_INTERVAL_MIN,
+					oldTruckArrivalIntervalMin, truckArrivalIntervalMin));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Forklift> getForklifts() {
+		if (forklifts == null) {
+			forklifts = new EObjectContainmentWithInverseEList<Forklift>(Forklift.class, this,
+					DatamodelPackage.SCENARIO__FORKLIFTS, DatamodelPackage.FORKLIFT__SCENARIO);
+		}
+		return forklifts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Node> getStoragePlaces() {
+		if (storagePlaces == null) {
+			storagePlaces = new EObjectResolvingEList<Node>(Node.class, this,
+					DatamodelPackage.SCENARIO__STORAGE_PLACES);
+		}
+		return storagePlaces;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Gate> getGates() {
+		if (gates == null) {
+			gates = new EObjectContainmentWithInverseEList<Gate>(Gate.class, this, DatamodelPackage.SCENARIO__GATES,
+					DatamodelPackage.GATE__SCENARIO);
+		}
+		return gates;
 	}
 
 	/**
@@ -273,6 +450,10 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getArcs()).basicAdd(otherEnd, msgs);
 		case DatamodelPackage.SCENARIO__AGENTS:
 			return ((InternalEList<InternalEObject>) (InternalEList<?>) getAgents()).basicAdd(otherEnd, msgs);
+		case DatamodelPackage.SCENARIO__FORKLIFTS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getForklifts()).basicAdd(otherEnd, msgs);
+		case DatamodelPackage.SCENARIO__GATES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getGates()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -291,6 +472,10 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 			return ((InternalEList<?>) getArcs()).basicRemove(otherEnd, msgs);
 		case DatamodelPackage.SCENARIO__AGENTS:
 			return ((InternalEList<?>) getAgents()).basicRemove(otherEnd, msgs);
+		case DatamodelPackage.SCENARIO__FORKLIFTS:
+			return ((InternalEList<?>) getForklifts()).basicRemove(otherEnd, msgs);
+		case DatamodelPackage.SCENARIO__GATES:
+			return ((InternalEList<?>) getGates()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -315,6 +500,16 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 			return getArcs();
 		case DatamodelPackage.SCENARIO__AGENTS:
 			return getAgents();
+		case DatamodelPackage.SCENARIO__TRUCK_CAPACITY:
+			return getTruckCapacity();
+		case DatamodelPackage.SCENARIO__TRUCK_ARRIVAL_INTERVAL_MIN:
+			return getTruckArrivalIntervalMin();
+		case DatamodelPackage.SCENARIO__FORKLIFTS:
+			return getForklifts();
+		case DatamodelPackage.SCENARIO__STORAGE_PLACES:
+			return getStoragePlaces();
+		case DatamodelPackage.SCENARIO__GATES:
+			return getGates();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -349,6 +544,24 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 			getAgents().clear();
 			getAgents().addAll((Collection<? extends Agent>) newValue);
 			return;
+		case DatamodelPackage.SCENARIO__TRUCK_CAPACITY:
+			setTruckCapacity((Integer) newValue);
+			return;
+		case DatamodelPackage.SCENARIO__TRUCK_ARRIVAL_INTERVAL_MIN:
+			setTruckArrivalIntervalMin((Double) newValue);
+			return;
+		case DatamodelPackage.SCENARIO__FORKLIFTS:
+			getForklifts().clear();
+			getForklifts().addAll((Collection<? extends Forklift>) newValue);
+			return;
+		case DatamodelPackage.SCENARIO__STORAGE_PLACES:
+			getStoragePlaces().clear();
+			getStoragePlaces().addAll((Collection<? extends Node>) newValue);
+			return;
+		case DatamodelPackage.SCENARIO__GATES:
+			getGates().clear();
+			getGates().addAll((Collection<? extends Gate>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -379,6 +592,21 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 		case DatamodelPackage.SCENARIO__AGENTS:
 			getAgents().clear();
 			return;
+		case DatamodelPackage.SCENARIO__TRUCK_CAPACITY:
+			setTruckCapacity(TRUCK_CAPACITY_EDEFAULT);
+			return;
+		case DatamodelPackage.SCENARIO__TRUCK_ARRIVAL_INTERVAL_MIN:
+			setTruckArrivalIntervalMin(TRUCK_ARRIVAL_INTERVAL_MIN_EDEFAULT);
+			return;
+		case DatamodelPackage.SCENARIO__FORKLIFTS:
+			getForklifts().clear();
+			return;
+		case DatamodelPackage.SCENARIO__STORAGE_PLACES:
+			getStoragePlaces().clear();
+			return;
+		case DatamodelPackage.SCENARIO__GATES:
+			getGates().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -403,6 +631,16 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 			return arcs != null && !arcs.isEmpty();
 		case DatamodelPackage.SCENARIO__AGENTS:
 			return agents != null && !agents.isEmpty();
+		case DatamodelPackage.SCENARIO__TRUCK_CAPACITY:
+			return truckCapacity != TRUCK_CAPACITY_EDEFAULT;
+		case DatamodelPackage.SCENARIO__TRUCK_ARRIVAL_INTERVAL_MIN:
+			return truckArrivalIntervalMin != TRUCK_ARRIVAL_INTERVAL_MIN_EDEFAULT;
+		case DatamodelPackage.SCENARIO__FORKLIFTS:
+			return forklifts != null && !forklifts.isEmpty();
+		case DatamodelPackage.SCENARIO__STORAGE_PLACES:
+			return storagePlaces != null && !storagePlaces.isEmpty();
+		case DatamodelPackage.SCENARIO__GATES:
+			return gates != null && !gates.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -424,9 +662,12 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 		result.append(beginDate);
 		result.append(", endDate: ");
 		result.append(endDate);
+		result.append(", truckCapacity: ");
+		result.append(truckCapacity);
+		result.append(", truckArrivalIntervalMin: ");
+		result.append(truckArrivalIntervalMin);
 		result.append(')');
 		return result.toString();
 	}
 
 } //ScenarioImpl
-

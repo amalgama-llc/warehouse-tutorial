@@ -139,6 +139,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getId() {
 		return id;
 	}
@@ -148,6 +149,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
@@ -160,6 +162,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -169,6 +172,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -181,6 +185,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getY() {
 		return y;
 	}
@@ -190,6 +195,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setY(double newY) {
 		double oldY = y;
 		y = newY;
@@ -202,6 +208,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getX() {
 		return x;
 	}
@@ -211,6 +218,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setX(double newX) {
 		double oldX = x;
 		x = newX;
@@ -223,6 +231,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Scenario getScenario() {
 		if (eContainerFeatureID() != DatamodelPackage.NODE__SCENARIO)
 			return null;
@@ -244,6 +253,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setScenario(Scenario newScenario) {
 		if (newScenario != eInternalContainer()
 				|| (eContainerFeatureID() != DatamodelPackage.NODE__SCENARIO && newScenario != null)) {
@@ -429,4 +439,3 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	}
 
 } //NodeImpl
-

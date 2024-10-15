@@ -155,4 +155,3 @@ public interface Arc extends EObject {
 	void setScenario(Scenario value);
 
 } // Arc
-

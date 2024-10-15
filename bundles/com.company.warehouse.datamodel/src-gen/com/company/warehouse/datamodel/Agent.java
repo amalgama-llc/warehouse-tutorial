@@ -163,4 +163,3 @@ public interface Agent extends EObject {
 	void setScenario(Scenario value);
 
 } // Agent
-

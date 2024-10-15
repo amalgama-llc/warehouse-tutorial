@@ -8,12 +8,16 @@ import com.company.warehouse.datamodel.Agent;
 import com.company.warehouse.datamodel.Arc;
 import com.company.warehouse.datamodel.DatamodelFactory;
 import com.company.warehouse.datamodel.DatamodelPackage;
+import com.company.warehouse.datamodel.Direction;
+import com.company.warehouse.datamodel.Forklift;
+import com.company.warehouse.datamodel.Gate;
 import com.company.warehouse.datamodel.Node;
 import com.company.warehouse.datamodel.Point;
 import com.company.warehouse.datamodel.Scenario;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -60,6 +64,27 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * @generated
 	 */
 	private EClass agentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forkliftEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum directionEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -133,6 +158,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getScenario() {
 		return scenarioEClass;
 	}
@@ -142,6 +168,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getScenario_Name() {
 		return (EAttribute) scenarioEClass.getEStructuralFeatures().get(0);
 	}
@@ -151,6 +178,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getScenario_BeginDate() {
 		return (EAttribute) scenarioEClass.getEStructuralFeatures().get(1);
 	}
@@ -160,6 +188,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getScenario_EndDate() {
 		return (EAttribute) scenarioEClass.getEStructuralFeatures().get(2);
 	}
@@ -169,6 +198,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getScenario_Nodes() {
 		return (EReference) scenarioEClass.getEStructuralFeatures().get(3);
 	}
@@ -178,6 +208,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getScenario_Arcs() {
 		return (EReference) scenarioEClass.getEStructuralFeatures().get(4);
 	}
@@ -187,6 +218,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getScenario_Agents() {
 		return (EReference) scenarioEClass.getEStructuralFeatures().get(5);
 	}
@@ -196,6 +228,57 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EAttribute getScenario_TruckCapacity() {
+		return (EAttribute) scenarioEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getScenario_TruckArrivalIntervalMin() {
+		return (EAttribute) scenarioEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScenario_Forklifts() {
+		return (EReference) scenarioEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScenario_StoragePlaces() {
+		return (EReference) scenarioEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScenario_Gates() {
+		return (EReference) scenarioEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getArc() {
 		return arcEClass;
 	}
@@ -205,6 +288,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getArc_Id() {
 		return (EAttribute) arcEClass.getEStructuralFeatures().get(0);
 	}
@@ -214,6 +298,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getArc_Name() {
 		return (EAttribute) arcEClass.getEStructuralFeatures().get(1);
 	}
@@ -223,6 +308,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getArc_Source() {
 		return (EReference) arcEClass.getEStructuralFeatures().get(2);
 	}
@@ -232,6 +318,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getArc_Dest() {
 		return (EReference) arcEClass.getEStructuralFeatures().get(3);
 	}
@@ -241,6 +328,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getArc_Points() {
 		return (EReference) arcEClass.getEStructuralFeatures().get(4);
 	}
@@ -250,6 +338,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getArc_Scenario() {
 		return (EReference) arcEClass.getEStructuralFeatures().get(5);
 	}
@@ -259,6 +348,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNode() {
 		return nodeEClass;
 	}
@@ -268,6 +358,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNode_Id() {
 		return (EAttribute) nodeEClass.getEStructuralFeatures().get(0);
 	}
@@ -277,6 +368,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNode_Name() {
 		return (EAttribute) nodeEClass.getEStructuralFeatures().get(1);
 	}
@@ -286,6 +378,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNode_Y() {
 		return (EAttribute) nodeEClass.getEStructuralFeatures().get(2);
 	}
@@ -295,6 +388,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNode_X() {
 		return (EAttribute) nodeEClass.getEStructuralFeatures().get(3);
 	}
@@ -304,6 +398,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getNode_Scenario() {
 		return (EReference) nodeEClass.getEStructuralFeatures().get(4);
 	}
@@ -313,6 +408,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPoint() {
 		return pointEClass;
 	}
@@ -322,6 +418,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPoint_Arc() {
 		return (EReference) pointEClass.getEStructuralFeatures().get(0);
 	}
@@ -331,6 +428,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPoint_Y() {
 		return (EAttribute) pointEClass.getEStructuralFeatures().get(1);
 	}
@@ -340,6 +438,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPoint_X() {
 		return (EAttribute) pointEClass.getEStructuralFeatures().get(2);
 	}
@@ -349,6 +448,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAgent() {
 		return agentEClass;
 	}
@@ -358,6 +458,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAgent_Id() {
 		return (EAttribute) agentEClass.getEStructuralFeatures().get(0);
 	}
@@ -367,6 +468,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAgent_Name() {
 		return (EAttribute) agentEClass.getEStructuralFeatures().get(1);
 	}
@@ -376,6 +478,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAgent_Included() {
 		return (EAttribute) agentEClass.getEStructuralFeatures().get(2);
 	}
@@ -385,6 +488,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAgent_BasePosition() {
 		return (EReference) agentEClass.getEStructuralFeatures().get(3);
 	}
@@ -394,6 +498,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAgent_Velocity() {
 		return (EAttribute) agentEClass.getEStructuralFeatures().get(4);
 	}
@@ -403,6 +508,7 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAgent_Scenario() {
 		return (EReference) agentEClass.getEStructuralFeatures().get(5);
 	}
@@ -412,6 +518,147 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EClass getForklift() {
+		return forkliftEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getForklift_Scenario() {
+		return (EReference) forkliftEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getForklift_Name() {
+		return (EAttribute) forkliftEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getForklift_Base() {
+		return (EReference) forkliftEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getForklift_Velocity() {
+		return (EAttribute) forkliftEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getForklift_LoadingTimeSec() {
+		return (EAttribute) forkliftEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getForklift_UnloadingTimeSec() {
+		return (EAttribute) forkliftEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getGate() {
+		return gateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGate_Scenario() {
+		return (EReference) gateEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGate_Id() {
+		return (EAttribute) gateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getGate_Direction() {
+		return (EAttribute) gateEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGate_Entrance() {
+		return (EReference) gateEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGate_Places() {
+		return (EReference) gateEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getDirection() {
+		return directionEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public DatamodelFactory getDatamodelFactory() {
 		return (DatamodelFactory) getEFactoryInstance();
 	}
@@ -443,6 +690,11 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 		createEReference(scenarioEClass, SCENARIO__NODES);
 		createEReference(scenarioEClass, SCENARIO__ARCS);
 		createEReference(scenarioEClass, SCENARIO__AGENTS);
+		createEAttribute(scenarioEClass, SCENARIO__TRUCK_CAPACITY);
+		createEAttribute(scenarioEClass, SCENARIO__TRUCK_ARRIVAL_INTERVAL_MIN);
+		createEReference(scenarioEClass, SCENARIO__FORKLIFTS);
+		createEReference(scenarioEClass, SCENARIO__STORAGE_PLACES);
+		createEReference(scenarioEClass, SCENARIO__GATES);
 
 		arcEClass = createEClass(ARC);
 		createEAttribute(arcEClass, ARC__ID);
@@ -471,6 +723,24 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 		createEReference(agentEClass, AGENT__BASE_POSITION);
 		createEAttribute(agentEClass, AGENT__VELOCITY);
 		createEReference(agentEClass, AGENT__SCENARIO);
+
+		forkliftEClass = createEClass(FORKLIFT);
+		createEReference(forkliftEClass, FORKLIFT__SCENARIO);
+		createEAttribute(forkliftEClass, FORKLIFT__NAME);
+		createEReference(forkliftEClass, FORKLIFT__BASE);
+		createEAttribute(forkliftEClass, FORKLIFT__VELOCITY);
+		createEAttribute(forkliftEClass, FORKLIFT__LOADING_TIME_SEC);
+		createEAttribute(forkliftEClass, FORKLIFT__UNLOADING_TIME_SEC);
+
+		gateEClass = createEClass(GATE);
+		createEReference(gateEClass, GATE__SCENARIO);
+		createEAttribute(gateEClass, GATE__ID);
+		createEAttribute(gateEClass, GATE__DIRECTION);
+		createEReference(gateEClass, GATE__ENTRANCE);
+		createEReference(gateEClass, GATE__PLACES);
+
+		// Create enums
+		directionEEnum = createEEnum(DIRECTION);
 	}
 
 	/**
@@ -527,6 +797,20 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 		initEReference(getScenario_Agents(), this.getAgent(), this.getAgent_Scenario(), "agents", null, 0, -1,
 				Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScenario_TruckCapacity(), ecorePackage.getEInt(), "truckCapacity", null, 0, 1, Scenario.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScenario_TruckArrivalIntervalMin(), ecorePackage.getEDouble(), "truckArrivalIntervalMin",
+				null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScenario_Forklifts(), this.getForklift(), this.getForklift_Scenario(), "forklifts", null, 0,
+				-1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScenario_StoragePlaces(), this.getNode(), null, "storagePlaces", null, 0, -1, Scenario.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScenario_Gates(), this.getGate(), this.getGate_Scenario(), "gates", null, 0, -1,
+				Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arcEClass, Arc.class, "Arc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getArc_Id(), ecorePackage.getEString(), "id", null, 0, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE,
@@ -574,18 +858,56 @@ public class DatamodelPackageImpl extends EPackageImpl implements DatamodelPacka
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAgent_Included(), ecorePackage.getEBoolean(), "included", "true", 0, 1, Agent.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAgent_BasePosition(), this.getNode(), null, "basePosition", null, 1, 1, Agent.class,
+		initEReference(getAgent_BasePosition(), this.getNode(), null, "basePosition", null, 0, 1, Agent.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAgent_Velocity(), ecorePackage.getEDouble(), "velocity", null, 0, 1, Agent.class,
+		initEAttribute(getAgent_Velocity(), ecorePackage.getEDouble(), "velocity", "50.0", 0, 1, Agent.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAgent_Scenario(), this.getScenario(), this.getScenario_Agents(), "scenario", null, 0, 1,
 				Agent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(forkliftEClass, Forklift.class, "Forklift", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getForklift_Scenario(), this.getScenario(), this.getScenario_Forklifts(), "scenario", null, 0, 1,
+				Forklift.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getForklift_Name(), ecorePackage.getEString(), "name", null, 0, 1, Forklift.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getForklift_Base(), this.getNode(), null, "base", null, 0, 1, Forklift.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getForklift_Velocity(), ecorePackage.getEDouble(), "velocity", null, 0, 1, Forklift.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getForklift_LoadingTimeSec(), ecorePackage.getEDouble(), "loadingTimeSec", null, 0, 1,
+				Forklift.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getForklift_UnloadingTimeSec(), ecorePackage.getEDouble(), "unloadingTimeSec", null, 0, 1,
+				Forklift.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(gateEClass, Gate.class, "Gate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGate_Scenario(), this.getScenario(), this.getScenario_Gates(), "scenario", null, 0, 1,
+				Gate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGate_Id(), ecorePackage.getEString(), "id", null, 0, 1, Gate.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGate_Direction(), this.getDirection(), "direction", null, 0, 1, Gate.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGate_Entrance(), this.getNode(), null, "entrance", null, 0, 1, Gate.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getGate_Places(), this.getNode(), null, "places", null, 0, -1, Gate.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(directionEEnum, Direction.class, "Direction");
+		addEEnumLiteral(directionEEnum, Direction.IN);
+		addEEnumLiteral(directionEEnum, Direction.OUT);
 
 		// Create resource
 		createResource(eNS_URI);
 	}
 
 } //DatamodelPackageImpl
-

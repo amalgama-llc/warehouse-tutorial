@@ -92,4 +92,3 @@ public interface Point extends EObject {
 	void setX(double value);
 
 } // Point
-
